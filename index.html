@@ -23,19 +23,22 @@
     }
 
     .hero {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
 
-      background-image: url("vitrine.png");
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-    }
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+
+  background-image: url("vitrine.png");
+
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+}
 
     .top-nav {
       position: absolute;
-      top: 34px;
+      top: 22px;
       right: 4%;
 
       display: flex;
@@ -46,18 +49,21 @@
     }
 
     .nav-link {
-      position: relative;
+  position: relative;
 
-      color: white;
-      text-decoration: none;
+  color: white;
+  text-decoration: none;
 
-      font-size: 15px;
-      font-weight: 500;
+  font-size: 16px;
+  font-weight: 700;
 
-      letter-spacing: 0.4px;
+  letter-spacing: 0.5px;
 
-      transition: 0.25s ease;
-    }
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.5);
+
+  transition: all 0.3s ease;
+}
 
     .nav-link::after {
       content: "";
@@ -80,8 +86,15 @@
     }
 
     .nav-link:hover {
-      opacity: 0.9;
-    }
+
+  transform: translateY(-3px);
+
+  color: #ffffff;
+
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.9),
+    0 0 20px rgba(255,255,255,0.5);
+}
 
     .discover-btn {
       display: inline-flex;
@@ -94,7 +107,7 @@
       text-decoration: none;
 
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 700;
 
       border: 1px solid rgba(255, 255, 255, 0.9);
       border-radius: 999px;
