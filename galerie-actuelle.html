@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Béni Saf aujourd'hui</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #021a2d;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .gallery {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #021a2d;
+    }
+
+    .slides {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 0.8s ease, transform 1.2s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+      z-index: 2;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 15, 30, 0.65),
+          transparent 45%
+        );
+    }
+
+    .caption {
+      position: absolute;
+      left: 6%;
+      bottom: 11%;
+      z-index: 5;
+      max-width: 600px;
+    }
+
+    .caption h2 {
+      font-size: clamp(28px, 5vw, 54px);
+      margin-bottom: 10px;
+    }
+
+    .caption p {
+      font-size: clamp(15px, 2vw, 19px);
+      line-height: 1.5;
+    }
+
+    .back {
+      position: absolute;
+      top: 25px;
+      left: 30px;
+      z-index: 20;
+      padding: 12px 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,.75);
+      border-radius: 999px;
+      background: rgba(0,60,100,.35);
+      backdrop-filter: blur(8px);
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.7);
+      color: white;
+      background: rgba(0,40,70,.35);
+      font-size: 30px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: .25s ease;
+    }
+
+    .arrow:hover {
+      background: rgba(255,255,255,.2);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .prev {
+      left: 25px;
+    }
+
+    .next {
+      right: 25px;
+    }
+
+    .dots {
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 70%;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,.45);
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .dot.active {
+      width: 26px;
+      border-radius: 999px;
+      background: white;
+    }
+
+    .counter {
+      position: absolute;
+      right: 30px;
+      bottom: 28px;
+      z-index: 20;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .slide img {
+        object-position: center;
+      }
+
+      .back {
+        top: 15px;
+        left: 15px;
+        padding: 10px 15px;
+        font-size: 13px;
+      }
+
+      .arrow {
+        width: 44px;
+        height: 44px;
+        font-size: 24px;
+      }
+
+      .prev {
+        left: 10px;
+      }
+
+      .next {
+        right: 10px;
+      }
+
+      .caption {
+        left: 7%;
+        right: 7%;
+        bottom: 13%;
+      }
+
+      .counter {
+        display: none;
+      }
+
+      .dots {
+        max-width: 85%;
+        bottom: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<section class="gallery" id="gallery">
+
+  <a href="photos.html" class="back">
+    ← Photos
+  </a>
+
+  <div class="slides">
+
+    <article class="slide active">
+      <img src="photos/photo1.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Béni Saf</h2>
+        <p>Entre Méditerranée, reliefs et lumière.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo2.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>La côte</h2>
+        <p>Des paysages ouverts sur la Méditerranée.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo3.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Le port</h2>
+        <p>Un lieu emblématique de la ville.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo4.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Les paysages</h2>
+        <p>Mer, reliefs et horizons lumineux.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo5.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Les rues</h2>
+        <p>Une ville vivante tournée vers la mer.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo6.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Le littoral</h2>
+        <p>Un décor naturel entre roche et Méditerranée.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo7.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Béni Saf</h2>
+        <p>Une autre vue de la ville.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo8.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Panorama</h2>
+        <p>La ville et la mer dans un même regard.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo9.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>La Méditerranée</h2>
+        <p>La mer façonne l'identité de Béni Saf.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo10.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Le front de mer</h2>
+        <p>Un paysage ouvert sur l'horizon.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo11.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>La ville</h2>
+        <p>Entre quartiers, reliefs et mer.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo12.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Le rivage</h2>
+        <p>Les couleurs naturelles de la côte.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo13.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Béni Saf</h2>
+        <p>Une ville authentique de la côte algérienne.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo14.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Les hauteurs</h2>
+        <p>Des points de vue remarquables sur la baie.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo15.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>La baie</h2>
+        <p>Un cadre naturel entre ville et Méditerranée.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo16.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Au bord de l'eau</h2>
+        <p>Une autre facette du littoral de Béni Saf.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo17.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Béni Saf</h2>
+        <p>Des paysages à découvrir au fil de la côte.</p>
+      </div>
+    </article>
+
+    <article class="slide">
+      <img src="photos/photo18.jpg" alt="Béni Saf">
+      <div class="caption">
+        <h2>Horizons</h2>
+        <p>La Méditerranée au cœur du paysage.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <button class="arrow prev" aria-label="Photo précédente">‹</button>
+  <button class="arrow next" aria-label="Photo suivante">›</button>
+
+  <div class="dots"></div>
+
+  <div class="counter">
+    <span id="current">1</span> /
+    <span id="total">18</span>
+  </div>
+
+</section>
+
+<script>
+  const slides = document.querySelectorAll(".slide");
+  const next = document.querySelector(".next");
+  const prev = document.querySelector(".prev");
+  const dotsContainer = document.querySelector(".dots");
+
+  const currentNumber = document.getElementById("current");
+  const totalNumber = document.getElementById("total");
+
+  let current = 0;
+
+  totalNumber.textContent = slides.length;
+
+  slides.forEach((slide, index) => {
+    const dot = document.createElement("button");
+
+    dot.classList.add("dot");
+
+    if (index === 0) {
+      dot.classList.add("active");
+    }
+
+    dot.addEventListener("click", () => {
+      showSlide(index);
+    });
+
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".dot");
+
+  function showSlide(index) {
+    slides[current].classList.remove("active");
+    dots[current].classList.remove("active");
+
+    current = (index + slides.length) % slides.length;
+
+    slides[current].classList.add("active");
+    dots[current].classList.add("active");
+
+    currentNumber.textContent = current + 1;
+  }
+
+  next.addEventListener("click", () => {
+    showSlide(current + 1);
+  });
+
+  prev.addEventListener("click", () => {
+    showSlide(current - 1);
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "ArrowRight") {
+      showSlide(current + 1);
+    }
+
+    if (event.key === "ArrowLeft") {
+      showSlide(current - 1);
+    }
+  });
+
+  let startX = 0;
+
+  document.getElementById("gallery").addEventListener(
+    "touchstart",
+    event => {
+      startX = event.touches[0].clientX;
+    }
+  );
+
+  document.getElementById("gallery").addEventListener(
+    "touchend",
+    event => {
+      const endX = event.changedTouches[0].clientX;
+      const difference = startX - endX;
+
+      if (Math.abs(difference) > 50) {
+        if (difference > 0) {
+          showSlide(current + 1);
+        } else {
+          showSlide(current - 1);
+        }
+      }
+    }
+  );
+</script>
+
+</body>
+</html>
