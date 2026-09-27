@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Contact - Béni Saf</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      color: white;
+      background:
+        linear-gradient(
+          rgba(0, 54, 100, 0.72),
+          rgba(0, 43, 78, 0.82)
+        ),
+        url("vitrine.png");
+
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+
+      padding: 40px 20px;
+    }
+
+    .contact-container {
+      width: 100%;
+      max-width: 900px;
+
+      margin: 0 auto;
+
+      background: rgba(0, 45, 85, 0.82);
+
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 28px;
+
+      padding: 45px;
+
+      backdrop-filter: blur(12px);
+
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.32),
+        0 0 30px rgba(0, 160, 255, 0.12);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .logo p {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #d9f3ff;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .intro h2 {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .intro p {
+      max-width: 720px;
+      margin: 0 auto;
+
+      font-size: 16px;
+      line-height: 1.7;
+
+      color: #e3f3ff;
+    }
+
+    form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+
+      padding: 14px 16px;
+
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+
+      background: rgba(255, 255, 255, 0.10);
+
+      color: white;
+
+      font-size: 16px;
+
+      outline: none;
+
+      transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #6ed8ff;
+
+      background: rgba(255, 255, 255, 0.14);
+
+      box-shadow:
+        0 0 0 3px rgba(0, 190, 255, 0.12),
+        0 0 18px rgba(0, 180, 255, 0.18);
+    }
+
+    select option {
+      color: #111;
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      margin-top: 10px;
+
+      padding: 15px 28px;
+
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #0078c8,
+          #00aeea
+        );
+
+      color: white;
+
+      font-size: 17px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 0 18px rgba(0, 180, 255, 0.30);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 0 24px rgba(0, 210, 255, 0.50);
+    }
+
+    .notice {
+      margin-top: 10px;
+
+      font-size: 13px;
+      line-height: 1.6;
+
+      color: #cbeaff;
+
+      text-align: center;
+    }
+
+    .back {
+      display: inline-block;
+
+      margin-top: 28px;
+
+      color: white;
+      text-decoration: none;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      transition: opacity 0.25s ease;
+    }
+
+    .back:hover {
+      opacity: 0.75;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 12px;
+        background-attachment: scroll;
+      }
+
+      .contact-container {
+        padding: 30px 20px;
+        border-radius: 22px;
+      }
+
+      .logo h1 {
+        font-size: 34px;
+      }
+
+      .intro h2 {
+        font-size: 24px;
+      }
+
+      .intro p {
+        font-size: 15px;
+      }
+
+      input,
+      select,
+      textarea {
+        font-size: 15px;
+      }
+
+      .submit-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="contact-container">
+
+    <div class="logo">
+      <h1>Béni Saf</h1>
+      <p>Authentique & Naturelle</p>
+    </div>
+
+    <div class="intro">
+      <h2>Contactez-nous</h2>
+
+      <p>
+        Vous possédez un hôtel, restaurant, commerce, activité touristique
+        ou autre établissement à Béni Saf et souhaitez le faire connaître ?
+        Vous souhaitez proposer un partenariat, transmettre une suggestion,
+        une doléance ou signaler une information incorrecte ?
+        Utilisez ce formulaire pour nous contacter.
+      </p>
+    </div>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+      <input
+        type="hidden"
+        name="access_key"
+        value="ab740c81-3ce2-49db-b44a-34582b894e7d"
+      >
+
+      <input
+        type="hidden"
+        name="subject"
+        value="Nouveau message depuis benisaf.fr"
+      >
+
+      <input
+        type="hidden"
+        name="redirect"
+        value="https://www.benisaf.fr/merci.html"
+      >
+
+      <div class="field-group">
+        <label for="type">Objet de votre demande *</label>
+
+        <select id="type" name="type" required>
+          <option value="">Choisissez une option</option>
+          <option value="promotion-etablissement">
+            Promouvoir mon établissement
+          </option>
+          <option value="hebergement">
+            Proposer un hébergement
+          </option>
+          <option value="restaurant-commerce">
+            Restaurant / commerce / activité
+          </option>
+          <option value="partenariat">
+            Proposition de partenariat
+          </option>
+          <option value="suggestion">
+            Suggestion
+          </option>
+          <option value="doleance">
+            Doléance / réclamation
+          </option>
+          <option value="correction">
+            Signaler une information incorrecte
+          </option>
+          <option value="autre">
+            Autre demande
+          </option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label for="name">Nom / établissement *</label>
+
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Votre nom ou le nom de votre établissement"
+          required
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="email">Email *</label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="votre@email.com"
+          required
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="phone">Téléphone</label>
+
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="+213..."
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="website">Site internet / réseau social</label>
+
+        <input
+          type="url"
+          id="website"
+          name="website"
+          placeholder="https://..."
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="message">Votre message *</label>
+
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Décrivez votre demande..."
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        Envoyer ma demande
+      </button>
+
+      <p class="notice">
+        Les informations transmises via ce formulaire sont uniquement utilisées
+        pour répondre à votre demande.
+      </p>
+
+    </form>
+
+    <a href="index.html" class="back">
+      ← Retour à l’accueil
+    </a>
+
+  </main>
+
+</body>
+</html>
