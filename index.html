@@ -25,14 +25,12 @@
   .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+}
 
-  background-image: url("vitrine.png");
-  background-size: 100% auto;
-  background-position: center top;
-  background-repeat: no-repeat;
-
-  background-color: #0c5f92;
+.hero-img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
   .top-nav {
@@ -210,6 +208,17 @@
 <body>
 
   <section class="hero">
+
+    <picture>
+      <source media="(max-width: 600px)" srcset="vitrine-mobile.png">
+      <source media="(max-width: 1100px)" srcset="vitrine-tablette.png">
+
+      <img
+        src="vitrine.png"
+        alt="Béni Saf - Perle de la côte algérienne"
+        class="hero-img"
+      >
+    </picture>
 
     <nav class="top-nav">
 
