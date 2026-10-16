@@ -348,10 +348,19 @@ const beaches = [
 
   {
     name:"Plage du Puits / El Bir",
-    lat:35.30218,
-    lng:-1.39935,
+    lat:35.30128570950751,
+    lng:-1.4025732023034292
     description:
-      "Plage urbaine emblématique de Béni Saf, située dans la baie en contrebas du secteur de l'Hôtel Siga."
+       
+      "Plage urbaine emblématique de Béni Saf, située dans la baie en contrebas du secteur de l'aquarium, Villa "le Rêve Bleu"."
+  },
+
+  {
+    name:"La Plage de Béni Saf",
+    lat:35.30299452953892,
+    lng:-1.3966001566820032
+    description:
+      "Plage principale situé entre la plage du puit et le port."  
   },
 
   {
@@ -410,12 +419,34 @@ const map = L.map(
 
 /* FOND DE CARTE */
 
-L.tileLayer(
+const streetMap = L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
     maxZoom:19,
     attribution:
       '&copy; OpenStreetMap contributors'
+  }
+);
+
+const satellite = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  {
+    maxZoom:19,
+    attribution:
+      'Tiles &copy; Esri'
+  }
+);
+
+streetMap.addTo(map);
+
+L.control.layers(
+  {
+    "Plan": streetMap,
+    "Satellite": satellite
+  },
+  null,
+  {
+    position:"topright"
   }
 ).addTo(map);
 
