@@ -6,12 +6,15 @@
 
   <title>Plages de Béni Saf – Carte interactive | benisaf.fr</title>
 
-  <meta
-    name="description"
-    content="Découvrez les plages autour de Béni Saf en Algérie grâce à une carte Google Maps interactive : Plage du Puits, Rachgoun, Madrid, Sidi Boucif, Terga et bien d'autres."
-  >
+  <meta name="description"
+        content="Découvrez les plages de Béni Saf et des environs grâce à une carte interactive : Plage du Puits, Sidi Boucif, Rachgoun, Madrid, Hafer Djmel et Sidi Djelloul.">
 
   <link rel="canonical" href="https://benisaf.fr/plages.html">
+
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  >
 
   <style>
     *{
@@ -23,10 +26,10 @@
 
     body{
       min-height:100vh;
+      color:white;
       background:
-        radial-gradient(circle at top, rgba(0,140,220,.16), transparent 35%),
-        linear-gradient(180deg,#04111c 0%,#061b2a 100%);
-      color:#fff;
+        radial-gradient(circle at top, rgba(0,150,220,.18), transparent 35%),
+        linear-gradient(180deg,#04111c,#061b2a);
     }
 
     .page{
@@ -35,79 +38,71 @@
       padding:35px 0 60px;
     }
 
-    .topbar{
-      margin-bottom:25px;
-    }
-
     .back-btn{
       display:inline-block;
+      margin-bottom:25px;
       padding:11px 20px;
       border-radius:30px;
+
+      color:white;
       text-decoration:none;
-      color:#fff;
-      border:1px solid rgba(65,200,255,.42);
-      background:rgba(0,120,180,.16);
-      box-shadow:0 0 20px rgba(0,180,255,.10);
+
+      border:1px solid rgba(70,200,255,.40);
+      background:rgba(0,130,190,.15);
+
       transition:.25s;
     }
 
     .back-btn:hover{
       transform:translateY(-2px);
-      background:rgba(0,150,220,.25);
+      background:rgba(0,150,220,.28);
     }
 
     h1{
-      font-size:clamp(2rem,4vw,3.4rem);
+      font-size:clamp(2rem,4vw,3.5rem);
       margin-bottom:12px;
     }
 
     .intro{
       max-width:900px;
-      color:rgba(255,255,255,.78);
       line-height:1.7;
-      font-size:1.05rem;
-      margin-bottom:28px;
+      color:rgba(255,255,255,.78);
+      margin-bottom:30px;
     }
 
-    .map-container{
+    .map-wrapper{
       display:grid;
       grid-template-columns:360px 1fr;
 
-      border:1px solid rgba(66,200,255,.30);
-      border-radius:28px;
+      min-height:720px;
+
       overflow:hidden;
+      border-radius:28px;
+
+      border:1px solid rgba(70,210,255,.28);
 
       background:
         linear-gradient(
           145deg,
-          rgba(3,24,42,.93),
-          rgba(2,13,26,.96)
+          rgba(4,30,48,.96),
+          rgba(2,15,28,.97)
         );
 
       box-shadow:
-        0 25px 70px rgba(0,0,0,.38),
+        0 25px 70px rgba(0,0,0,.40),
         0 0 35px rgba(0,170,255,.10);
     }
 
-    /* ============================= */
-    /* LISTE DES PLAGES              */
-    /* ============================= */
+    /* ========================== */
+    /* COLONNE PLAGES             */
+    /* ========================== */
 
     .sidebar{
       padding:24px;
+      overflow-y:auto;
 
       border-right:
         1px solid rgba(70,200,255,.18);
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(5,32,52,.96),
-          rgba(3,18,33,.96)
-        );
-
-      max-height:720px;
-      overflow-y:auto;
     }
 
     .sidebar h2{
@@ -116,10 +111,10 @@
     }
 
     .sidebar-text{
-      color:rgba(255,255,255,.65);
-      font-size:.94rem;
+      font-size:.93rem;
       line-height:1.5;
-      margin-bottom:22px;
+      color:rgba(255,255,255,.65);
+      margin-bottom:20px;
     }
 
     .beach-list{
@@ -141,11 +136,7 @@
 
       cursor:pointer;
 
-      transition:
-        transform .2s ease,
-        background .2s ease,
-        border-color .2s ease,
-        box-shadow .2s ease;
+      transition:.2s ease;
     }
 
     .beach-card:hover,
@@ -168,14 +159,14 @@
     }
 
     .beach-card p{
-      font-size:.87rem;
-      color:rgba(255,255,255,.65);
-      line-height:1.4;
+      font-size:.86rem;
+      color:rgba(255,255,255,.68);
+      line-height:1.45;
     }
 
-    /* ============================= */
-    /* GOOGLE MAP                    */
-    /* ============================= */
+    /* ========================== */
+    /* CARTE                      */
+    /* ========================== */
 
     .map-area{
       position:relative;
@@ -191,23 +182,18 @@
 
     .map-label{
       position:absolute;
-
       left:20px;
       bottom:20px;
 
-      z-index:10;
+      z-index:500;
 
       padding:11px 16px;
-
       border-radius:15px;
 
-      background:
-        rgba(3,18,30,.83);
+      background:rgba(3,18,30,.85);
 
       border:
         1px solid rgba(80,200,255,.28);
-
-      color:white;
 
       backdrop-filter:blur(10px);
 
@@ -217,17 +203,55 @@
       pointer-events:none;
     }
 
+    /* ========================== */
+    /* POPUP                      */
+    /* ========================== */
+
+    .leaflet-popup-content-wrapper{
+      border-radius:16px;
+    }
+
+    .popup{
+      min-width:210px;
+    }
+
+    .popup h3{
+      margin-bottom:7px;
+      color:#092033;
+    }
+
+    .popup p{
+      color:#333;
+      line-height:1.45;
+      margin-bottom:12px;
+    }
+
+    .route-btn{
+      display:inline-block;
+
+      padding:8px 12px;
+
+      border-radius:18px;
+
+      text-decoration:none;
+
+      color:white;
+
+      background:#0879ba;
+    }
+
+    .route-btn:hover{
+      background:#065f92;
+    }
+
     @media(max-width:1000px){
 
-      .map-container{
+      .map-wrapper{
         grid-template-columns:1fr;
       }
 
       .sidebar{
-        max-height:none;
-
-        border-right:0;
-
+        border-right:none;
         border-bottom:
           1px solid rgba(70,200,255,.18);
       }
@@ -257,10 +281,6 @@
       .map-area{
         min-height:500px;
       }
-
-      .map-label{
-        font-size:.82rem;
-      }
     }
   </style>
 </head>
@@ -269,60 +289,45 @@
 
 <main class="page">
 
-  <div class="topbar">
-    <a href="index.html" class="back-btn">
-      ← Retour à l'accueil
-    </a>
-  </div>
-
+  <a href="index.html" class="back-btn">
+    ← Retour à l'accueil
+  </a>
 
   <h1>
     Découvrir les plages de Béni Saf
   </h1>
 
-
   <p class="intro">
     Explorez les plages de Béni Saf et du littoral environnant.
-    Sélectionnez une plage dans la liste pour la localiser directement
-    sur la carte interactive.
+    Cliquez sur une plage pour la localiser sur la carte,
+    afficher ses informations et obtenir un itinéraire.
   </p>
 
 
-  <section class="map-container">
-
-    <!-- ========================= -->
-    <!-- COLONNE GAUCHE            -->
-    <!-- ========================= -->
+  <section class="map-wrapper">
 
     <aside class="sidebar">
 
-      <h2>
-        Plages à découvrir
-      </h2>
+      <h2>Plages à découvrir</h2>
 
       <p class="sidebar-text">
-        Cliquez sur une plage pour la localiser
-        et afficher ses informations.
+        Sélectionnez une plage pour zoomer directement dessus.
       </p>
 
       <div
-        id="beachList"
-        class="beach-list">
+        class="beach-list"
+        id="beachList">
       </div>
 
     </aside>
 
-
-    <!-- ========================= -->
-    <!-- GOOGLE MAP               -->
-    <!-- ========================= -->
 
     <div class="map-area">
 
       <div id="map"></div>
 
       <div class="map-label">
-        📍 Plages autour de Béni Saf
+        📍 Littoral de Béni Saf
       </div>
 
     </div>
@@ -332,193 +337,119 @@
 </main>
 
 
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+
 <script>
 
 const beaches = [
 
   {
-    name: "Plage du Puits",
-    lat: 35.314,
-    lng: -1.378,
+    name:"Plage du Puits / El Bir",
+    lat:35.30218,
+    lng:-1.39935,
     description:
-      "Une des plages emblématiques de Béni Saf, proche de la ville."
+      "Plage urbaine emblématique de Béni Saf, située dans la baie en contrebas du secteur de l'Hôtel Siga."
   },
 
   {
-    name: "Hafer Djmel",
-    lat: 35.328,
-    lng: -1.346,
+    name:"Sidi Boucif",
+    lat:35.30710,
+    lng:-1.37927,
     description:
-      "Plage du littoral proche de Béni Saf."
+      "Plage située à proximité du port et du quartier Sidi Boucif."
   },
 
   {
-    name: "Sidi Boucif",
-    lat: 35.336,
-    lng: -1.330,
+    name:"Rachgoun",
+    lat:35.29854,
+    lng:-1.47015,
     description:
-      "Plage connue du secteur de Béni Saf."
+      "Grande plage située à l'embouchure de la Tafna, face à l'île de Rachgoun."
   },
 
   {
-    name: "Madrid Plage",
-    lat: 35.350,
-    lng: -1.305,
+    name:"Madrid Plage",
+    lat:35.30310,
+    lng:-1.46662,
     description:
-      "Une plage connue de la commune de Béni Saf."
+      "Petite plage située dans le secteur balnéaire de Rachgoun."
   },
 
   {
-    name: "Rachgoun",
-    lat: 35.300,
-    lng: -1.470,
+    name:"Hafer Djmel",
+    lat:35.32705,
+    lng:-1.34654,
     description:
-      "Site balnéaire réputé situé à proximité de l'île de Rachgoun."
+      "Plage naturelle et rocheuse située à l'est de Béni Saf."
   },
 
   {
-    name: "Plage d'Amour",
-    lat: 35.372,
-    lng: -1.257,
+    name:"Sidi Djelloul",
+    lat:35.35515,
+    lng:-1.28770,
     description:
-      "Une plage du littoral proche de Béni Saf."
-  },
-
-  {
-    name: "Sidi Djelloul",
-    lat: 35.388,
-    lng: -1.196,
-    description:
-      "Plage située à l'est de Béni Saf."
-  },
-
-  {
-    name: "Terga",
-    lat: 35.404,
-    lng: -1.141,
-    description:
-      "Une des plages connues du littoral d'Aïn Témouchent."
-  },
-
-  {
-    name: "Sassel",
-    lat: 35.420,
-    lng: -1.108,
-    description:
-      "Plage située plus à l'est sur le littoral."
-  },
-
-  {
-    name: "Tafsout",
-    lat: 35.256,
-    lng: -1.533,
-    description:
-      "Plage située à l'ouest de Béni Saf."
+      "Plage du secteur de Sidi Safi, située plus à l'est sur le littoral."
   }
 
 ];
 
 
-let map;
-let infoWindow;
+const map = L.map(
+  "map",
+  {
+    scrollWheelZoom:true
+  }
+).setView(
+  [35.315,-1.385],
+  11
+);
+
+
+/* FOND DE CARTE */
+
+L.tileLayer(
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    maxZoom:19,
+    attribution:
+      '&copy; OpenStreetMap contributors'
+  }
+).addTo(map);
+
+
+const beachList =
+  document.getElementById(
+    "beachList"
+  );
+
 
 const markers = [];
 
 
-function initMap(){
+/* ============================= */
+/* PLAGES                        */
+/* ============================= */
 
-  /* CENTRE SUR BENI SAF */
+beaches.forEach(
+  (beach,index)=>{
 
-  map = new google.maps.Map(
-    document.getElementById("map"),
-    {
-      center:{
-        lat:35.320,
-        lng:-1.385
-      },
-
-      zoom:11,
-
-      mapTypeControl:true,
-
-      streetViewControl:false,
-
-      fullscreenControl:true,
-
-      gestureHandling:"greedy"
-    }
-  );
+    const marker =
+      L.marker(
+        [beach.lat,beach.lng]
+      ).addTo(map);
 
 
-  infoWindow =
-    new google.maps.InfoWindow();
+    markers.push(marker);
 
 
-  const beachList =
-    document.getElementById(
-      "beachList"
-    );
+    /* POPUP */
 
+    marker.bindPopup(`
 
-  beaches.forEach(
-    (beach,index)=>{
-
-
-      /* ======================= */
-      /* MARQUEUR                */
-      /* ======================= */
-
-      const marker =
-        new google.maps.Marker({
-
-          position:{
-            lat:beach.lat,
-            lng:beach.lng
-          },
-
-          map:map,
-
-          title:beach.name
-
-        });
-
-
-      markers.push(marker);
-
-
-      /* ======================= */
-      /* INFO GOOGLE MAP         */
-      /* ======================= */
-
-      marker.addListener(
-        "click",
-        ()=>{
-
-          showBeach(
-            beach,
-            marker,
-            index
-          );
-
-        }
-      );
-
-
-      /* ======================= */
-      /* CARTE À GAUCHE          */
-      /* ======================= */
-
-      const card =
-        document.createElement(
-          "div"
-        );
-
-
-      card.className =
-        "beach-card";
-
-
-      card.innerHTML = `
+      <div class="popup">
 
         <h3>
           ${beach.name}
@@ -528,52 +459,88 @@ function initMap(){
           ${beach.description}
         </p>
 
-      `;
+        <a
+          class="route-btn"
+          target="_blank"
+          rel="noopener"
+          href="https://www.google.com/maps/dir/?api=1&destination=${beach.lat},${beach.lng}"
+        >
+          Itinéraire
+        </a>
+
+      </div>
+
+    `);
 
 
-      card.addEventListener(
-        "click",
-        ()=>{
-
-          map.panTo({
-
-            lat:beach.lat,
-
-            lng:beach.lng
-
-          });
+    marker.on(
+      "click",
+      ()=>{
+        activateCard(index);
+      }
+    );
 
 
-          map.setZoom(14);
+    /* CARTE GAUCHE */
 
-
-          showBeach(
-            beach,
-            marker,
-            index
-          );
-
-        }
+    const card =
+      document.createElement(
+        "div"
       );
 
 
-      beachList.appendChild(
-        card
-      );
-
-    }
-  );
-
-}
+    card.className =
+      "beach-card";
 
 
-function showBeach(
-  beach,
-  marker,
-  index
-){
+    card.innerHTML = `
 
-  /* ACTIVE CARD */
+      <h3>
+        ${beach.name}
+      </h3>
+
+      <p>
+        ${beach.description}
+      </p>
+
+    `;
+
+
+    card.addEventListener(
+      "click",
+      ()=>{
+
+        map.flyTo(
+          [beach.lat,beach.lng],
+          14,
+          {
+            duration:1.1
+          }
+        );
+
+
+        marker.openPopup();
+
+
+        activateCard(index);
+
+      }
+    );
+
+
+    beachList.appendChild(
+      card
+    );
+
+  }
+);
+
+
+/* ============================= */
+/* CARTE ACTIVE                  */
+/* ============================= */
+
+function activateCard(index){
 
   document
     .querySelectorAll(
@@ -590,65 +557,9 @@ function showBeach(
       }
     );
 
-
-  /* POPUP GOOGLE */
-
-  infoWindow.setContent(`
-
-    <div
-      style="
-        max-width:230px;
-        font-family:Arial;
-      "
-    >
-
-      <strong
-        style="
-          font-size:16px;
-        "
-      >
-        ${beach.name}
-      </strong>
-
-      <p
-        style="
-          margin-top:7px;
-          line-height:1.4;
-        "
-      >
-
-        ${beach.description}
-
-      </p>
-
-    </div>
-
-  `);
-
-
-  infoWindow.open({
-
-    anchor:marker,
-
-    map:map
-
-  });
-
 }
 
 </script>
-
-
-<!-- ====================================== -->
-<!-- GOOGLE MAPS                            -->
-<!-- ====================================== -->
-
-<script
-  async
-  defer
-  src="https://maps.googleapis.com/maps/api/js?key=TA_CLE_API_GOOGLE_MAPS&callback=initMap">
-</script>
-
 
 </body>
 </html>
