@@ -4,69 +4,181 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- <title>Vivre à Béni Saf – Histoire de Béni Saf, sa vie locale et son évolution de la ville | benisaf.fr</title>
-<meta name="description" content="Parler nous de Béni Saf : la vie locale vue par les Béni Safiens.">
+  <title>Vivre à Béni Saf – Histoire, pêche, port et vie locale | benisaf.fr</title>
+  <meta name="description" content="Découvrez Béni Saf à travers son histoire, son port, la pêche et les réalités de la ville d'aujourd'hui.">
   <link rel="canonical" href="https://benisaf.fr/bons-plans.html">
 
   <style>
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,#04111c,#061b2a);
+      font-family:Arial,Helvetica,sans-serif;
       color:#fff;
       min-height:100vh;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(20,120,180,.17), transparent 34%),
+        radial-gradient(circle at 80% 10%, rgba(0,180,220,.08), transparent 30%),
+        linear-gradient(180deg,#03111c 0%,#061b2a 48%,#04131f 100%);
     }
-
-    .page{
-      max-width:1000px;
-      margin:auto;
-      padding:60px 24px;
+    a{color:#7ce9ff;text-decoration:none}
+    a:hover{color:#fff}
+    .page{width:min(1120px,calc(100% - 32px));margin:0 auto;padding:42px 0 70px}
+    .back{display:inline-flex;align-items:center;gap:8px;margin-bottom:34px;font-size:15px;color:#8beaff}
+    .hero{
+      padding:34px 34px 30px;
+      border:1px solid rgba(104,220,255,.20);
+      border-radius:28px;
+      background:linear-gradient(145deg,rgba(11,63,104,.30),rgba(3,27,49,.24));
+      box-shadow:0 18px 50px rgba(0,0,0,.24),inset 0 0 30px rgba(80,210,255,.025);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
     }
-
-    a{
-      color:#6fdcff;
-      text-decoration:none;
-    }
-
-    h1{
-      font-size:42px;
-      margin-bottom:20px;
-    }
-
-    p{
-      line-height:1.7;
-      color:rgba(255,255,255,.82);
-      font-size:18px;
-    }
-
-    .box{
-      margin-top:30px;
-      padding:24px;
-      border-radius:18px;
-      border:1px solid rgba(80,200,255,.30);
-      background:rgba(255,255,255,.04);
+    .eyebrow{margin:0 0 8px;color:#75eaff;text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:800}
+    h1{margin:0;font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-1.5px}
+    .intro{max-width:780px;margin:18px 0 0;color:rgba(255,255,255,.80);font-size:18px;line-height:1.75}
+    .tabs{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0 20px;padding:8px;border:1px solid rgba(98,218,255,.14);border-radius:20px;background:rgba(2,24,43,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+    .tab-btn{appearance:none;border:1px solid rgba(110,220,255,.16);background:rgba(255,255,255,.025);color:rgba(255,255,255,.78);padding:13px 18px;border-radius:14px;cursor:pointer;font-size:15px;font-weight:700;transition:.22s ease}
+    .tab-btn:hover{transform:translateY(-1px);border-color:rgba(120,230,255,.34);color:#fff}
+    .tab-btn.active{color:#fff;background:linear-gradient(145deg,rgba(22,151,205,.60),rgba(10,89,145,.55));border-color:rgba(116,232,255,.55);box-shadow:0 0 18px rgba(0,190,255,.15)}
+    .tab-panel{display:none;animation:fadeIn .28s ease}
+    .tab-panel.active{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+    .content-card{padding:30px;border:1px solid rgba(90,205,255,.17);border-radius:24px;background:linear-gradient(145deg,rgba(7,45,78,.32),rgba(2,23,41,.35));box-shadow:0 16px 45px rgba(0,0,0,.22),inset 0 0 24px rgba(70,190,255,.02);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+    .content-card h2{margin:0 0 18px;font-size:30px;color:#fff}
+    .content-card h3{margin:28px 0 10px;font-size:20px;color:#82eaff}
+    .content-card p{margin:0 0 15px;color:rgba(255,255,255,.82);font-size:17px;line-height:1.78}
+    .timeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:24px}
+    .fact{padding:18px 18px 17px;border-radius:18px;border:1px solid rgba(95,215,255,.15);background:rgba(255,255,255,.025)}
+    .fact strong{display:block;color:#7deaff;font-size:16px;margin-bottom:7px}
+    .fact span{color:rgba(255,255,255,.74);line-height:1.55;font-size:14px}
+    .note{margin-top:24px;padding:18px 20px;border-left:3px solid #6fe8ff;border-radius:14px;background:rgba(20,120,180,.08);color:rgba(255,255,255,.76);line-height:1.7}
+    .problem-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
+    .problem{padding:20px;border-radius:18px;border:1px dashed rgba(100,220,255,.22);background:rgba(255,255,255,.018)}
+    .problem h3{margin:0 0 8px;font-size:18px;color:#8cecff}
+    .problem p{margin:0;font-size:15px;color:rgba(255,255,255,.63)}
+    @media(max-width:760px){
+      .page{width:min(100% - 20px,1120px);padding-top:22px}
+      .hero,.content-card{padding:22px;border-radius:20px}
+      .tabs{gap:8px}
+      .tab-btn{flex:1 1 100%;text-align:left}
+      .timeline,.problem-grid{grid-template-columns:1fr}
+      .intro{font-size:16px}
+      .content-card p{font-size:16px}
     }
   </style>
 </head>
-
 <body>
   <main class="page">
+    <a class="back" href="index.html">← Retour à l'accueil</a>
 
-    <a href="index.html">← Retour à l'accueil</a>
+    <section class="hero">
+      <p class="eyebrow">Béni Saf, hier et aujourd'hui</p>
+      <h1>Vivre à Béni Saf</h1>
+      <p class="intro">Son histoire, son port, sa pêche et les réalités de la ville d'aujourd'hui. Une page pour mieux comprendre Béni Saf, son identité et son évolution.</p>
+    </section>
 
-    <h1>L'histoire de Béni Saf</h1>
-
-<p>
-  Découvrez prochainement les bonnes adresses de Béni Saf :
-  restaurants, sorties, commerces, services et idées pour profiter pleinement de votre séjour.
-</p>
-
-    <div class="box">
-      <strong>À venir :</strong>
-      Tous les bons plans à partager locations saisonnières et hébergements, randonnées, balades en bateaux...
-       Les tendances à Béni Saf.
+    <div class="tabs" role="tablist" aria-label="Rubriques Vivre à Béni Saf">
+      <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="tab-histoire" data-tab="tab-histoire">Histoire de Béni Saf</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-peche" data-tab="tab-peche">La pêche et le port</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-problemes" data-tab="tab-problemes">Les problèmes de Béni Saf</button>
     </div>
 
+    <section class="tab-panel active" id="tab-histoire" role="tabpanel">
+      <article class="content-card">
+        <h2>L'histoire de Béni Saf</h2>
+        <p>Béni Saf est une ville côtière de la wilaya d'Aïn Témouchent. Son développement moderne est étroitement lié à l'exploitation du minerai de fer, qui a profondément transformé ce territoire accidenté situé au bord de la Méditerranée.</p>
+        <p>Avant la création de la ville moderne, la région était faite de collines, de ravins et de falaises abruptes. Les implantations les plus importantes de l'Antiquité se trouvaient notamment du côté de Siga et de Rachgoun.</p>
+
+        <h3>La naissance d'une ville minière</h3>
+        <p>Au XIXe siècle, la découverte et l'exploitation de riches gisements de minerai de fer changent profondément le destin du site. L'exportation du minerai impose la création d'infrastructures, de logements pour les ouvriers et surtout d'un port.</p>
+        <p>La ville se construit progressivement sur un relief difficile. Des ravins sont comblés avec les déchets miniers, appelés « stériles », tandis que de nouvelles rues apparaissent au fur et à mesure du développement de l'activité.</p>
+
+        <h3>À partir de 1879</h3>
+        <p>À partir du 1er janvier 1879, Béni Saf connaît un essor important. Le port et les infrastructures minières accélèrent l'expansion de la ville. En 1881, le port est achevé et l'activité minière emploie déjà plus d'un millier d'ouvriers.</p>
+
+        <div class="timeline">
+          <div class="fact"><strong>1874</strong><span>Le village est officiellement reconnu et se structure autour de l'activité minière.</span></div>
+          <div class="fact"><strong>1879</strong><span>Début d'une phase d'essor rapide de Béni Saf.</span></div>
+          <div class="fact"><strong>1881</strong><span>Le port est achevé et devient un élément essentiel du développement de la ville.</span></div>
+          <div class="fact"><strong>Années 1970</strong><span>L'épuisement progressif des filons entraîne la fermeture des mines.</span></div>
+        </div>
+
+        <h3>Après l'indépendance</h3>
+        <p>Après 1962, Béni Saf poursuit son évolution. Avec le recul de l'activité minière, la pêche conserve une place majeure dans l'économie locale. La ville est ensuite rattachée à la wilaya d'Aïn Témouchent en 1984.</p>
+        <p>Aujourd'hui encore, les vestiges de l'ancienne mine et l'organisation particulière des rues témoignent de cette histoire industrielle qui a façonné Béni Saf.</p>
+      </article>
+    </section>
+
+    <section class="tab-panel" id="tab-peche" role="tabpanel" hidden>
+      <article class="content-card">
+        <h2>La pêche et le port</h2>
+        <p>Si la mine a joué un rôle essentiel dans la naissance de la ville moderne, la pêche est devenue l'une des activités les plus emblématiques de Béni Saf. Le port, initialement conçu pour l'exportation du minerai et des marchandises, s'est progressivement tourné vers l'activité halieutique.</p>
+
+        <h3>Un port au cœur de la ville</h3>
+        <p>Le port de Béni Saf s'est développé en parallèle de la mine. Au fil des décennies, il accueille des navires de transport, des chalutiers et des embarcations de pêche. Une véritable activité commerciale s'organise autour des quais et de la criée.</p>
+
+        <h3>Sardines, anchois et conserveries</h3>
+        <p>À partir de la fin des années 1930, des conserveries s'installent dans la ville. La sardine et l'anchois occupent une place importante dans l'économie locale. Cette activité fait travailler non seulement les pêcheurs, mais aussi de nombreux métiers liés à la construction et à la réparation des bateaux, des filets et des équipements.</p>
+        <p>En 1956, les données historiques disponibles font état de 950 pêcheurs, 42 chalutiers et 45 lamparos. L'ensemble de cette activité faisait alors vivre près de 2 000 familles.</p>
+
+        <div class="timeline">
+          <div class="fact"><strong>1938</strong><span>Construction d'une première usine de conserves dans le secteur de la plage du Capitaine.</span></div>
+          <div class="fact"><strong>1956</strong><span>La pêche représente déjà une activité économique majeure pour Béni Saf.</span></div>
+          <div class="fact"><strong>Après les mines</strong><span>Le port se reconvertit progressivement vers une activité essentiellement consacrée à la pêche.</span></div>
+          <div class="fact"><strong>Aujourd'hui</strong><span>La pêche reste un élément central de l'identité économique et culturelle de Béni Saf.</span></div>
+        </div>
+
+        <div class="note">Cette rubrique pourra ensuite être enrichie avec des photos du port, des témoignages de pêcheurs, l'histoire des conserveries et des informations sur les différentes embarcations utilisées à Béni Saf.</div>
+      </article>
+    </section>
+
+    <section class="tab-panel" id="tab-problemes" role="tabpanel" hidden>
+      <article class="content-card">
+        <h2>Les problèmes de Béni Saf</h2>
+        <p>Cette rubrique a vocation à parler de Béni Saf telle qu'elle est réellement : ses qualités, mais aussi les difficultés rencontrées au quotidien.</p>
+        <p>Pour rester juste et crédible, cette partie sera construite à partir de faits, d'exemples précis et, lorsque cela sera possible, de témoignages ou de documents.</p>
+
+        <div class="problem-grid">
+          <div class="problem"><h3>Urbanisme et circulation</h3><p>Section à compléter avec des situations concrètes observées à Béni Saf.</p></div>
+          <div class="problem"><h3>Propreté et entretien</h3><p>Section à compléter avec des exemples précis et vérifiables.</p></div>
+          <div class="problem"><h3>Tourisme et infrastructures</h3><p>Section à compléter selon les réalités de la ville et de la saison estivale.</p></div>
+          <div class="problem"><h3>Patrimoine et cadre de vie</h3><p>Section à compléter avec les lieux, bâtiments ou espaces concernés.</p></div>
+        </div>
+
+        <div class="note">Cette partie est volontairement laissée ouverte pour le moment. Elle pourra être rédigée à partir de vos observations et de votre connaissance de Béni Saf, afin d'éviter les affirmations approximatives ou injustifiées.</div>
+      </article>
+    </section>
   </main>
+
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const targetId = button.dataset.tab;
+
+        tabButtons.forEach((btn) => {
+          btn.classList.remove('active');
+          btn.setAttribute('aria-selected', 'false');
+        });
+
+        tabPanels.forEach((panel) => {
+          panel.classList.remove('active');
+          panel.hidden = true;
+        });
+
+        button.classList.add('active');
+        button.setAttribute('aria-selected', 'true');
+
+        const targetPanel = document.getElementById(targetId);
+        if(targetPanel){
+          targetPanel.hidden = false;
+          targetPanel.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
