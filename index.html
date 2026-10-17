@@ -603,60 +603,52 @@
 
   <div class="sakksi-chat" id="sakksiChat">
 
-    <div class="sakksi-header">
+  <div class="sakksi-header">
 
-      <img
-        src="sakksi.png"
-        alt="SAKKSI - Agent virtuel de Béni Saf"
+    <div class="sakksi-title">
+      <strong>SAKKSI • ASSISTANTE IA</strong>
+    </div>
+
+    <button
+      class="sakksi-close"
+      id="sakksiClose"
+      aria-label="Fermer SAKKSI">
+      ×
+    </button>
+
+  </div>
+
+  <div class="sakksi-content">
+
+    <div class="sakksi-message">
+      <p>
+        Bonjour, je suis <strong>SAKKSI</strong>.<br>
+        Comment puis-je vous aider aujourd’hui ?
+      </p>
+    </div>
+
+    <div class="sakksi-input-row">
+
+      <input
+        type="text"
+        id="sakksiInput"
+        class="sakksi-input"
+        placeholder="Posez votre question..."
+        autocomplete="off"
       >
 
-      <div class="sakksi-title">
-        <strong>SAKKSI</strong>
-        <span>Votre guide virtuel de Béni Saf</span>
-      </div>
-
       <button
-        class="sakksi-close"
-        id="sakksiClose">
-        ×
+        id="sakksiSend"
+        class="sakksi-send"
+        aria-label="Envoyer">
+        ➤
       </button>
 
     </div>
 
-    <div class="sakksi-content">
-
-      <p>
-        Bonjour 👋 Je suis <strong>SAKKSI</strong>,
-        votre guide virtuel de Béni Saf.
-      </p>
-
-      <p>
-        Que souhaitez-vous découvrir ?
-      </p>
-
-      <div class="sakksi-actions">
-
-        <a href="plages.html">
-          🏖️ Les plages
-        </a>
-
-        <a href="lieux.html">
-          📍 Lieux à visiter
-        </a>
-
-        <a href="hebergements.html">
-          🏠 Hébergements
-        </a>
-
-        <a href="bons-plans.html">
-          ⭐ Bons plans
-        </a>
-
-      </div>
-
-    </div>
-
   </div>
+
+</div>
 
 
   <div class="sakksi-avatar-wrap" id="sakksiBubble">
