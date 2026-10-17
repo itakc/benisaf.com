@@ -39,19 +39,20 @@
 }
 
   .top-nav {
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  top: 42px;
 
-    display: flex;
-    align-items: center;
-    gap: 28px;
+  left: 340px;
+  right: 40px;
 
-    z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 28px;
 
-    white-space: nowrap;
-  }
+  z-index: 10;
+
+  white-space: nowrap;
+}
 
   .nav-link {
     position: relative;
@@ -151,6 +152,257 @@
   clip:rect(0,0,0,0);
   white-space:nowrap;
   border:0;
+}
+    /* ========================= */
+/* SAKKSI - AGENT VIRTUEL    */
+/* ========================= */
+
+.sakksi-widget{
+  position:fixed;
+  right:28px;
+  bottom:24px;
+  z-index:9999;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.sakksi-bubble{
+  position:relative;
+  width:82px;
+  height:82px;
+
+  border-radius:50%;
+  border:2px solid rgba(120,235,255,.9);
+
+  background:rgba(0,45,85,.85);
+
+  cursor:pointer;
+
+  box-shadow:
+    0 0 12px rgba(0,210,255,.8),
+    0 0 30px rgba(0,150,255,.5);
+
+  transition:.25s ease;
+}
+
+.sakksi-bubble:hover{
+  transform:scale(1.08);
+
+  box-shadow:
+    0 0 18px rgba(80,235,255,1),
+    0 0 42px rgba(0,160,255,.7);
+}
+
+.sakksi-avatar{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.sakksi-status{
+  position:absolute;
+  right:2px;
+  bottom:4px;
+
+  width:16px;
+  height:16px;
+
+  border-radius:50%;
+
+  background:#2effa4;
+  border:3px solid #00345a;
+
+  box-shadow:0 0 8px #2effa4;
+}
+
+
+/* petite indication */
+
+.sakksi-hint{
+  position:absolute;
+  right:96px;
+  bottom:18px;
+
+  white-space:nowrap;
+
+  padding:10px 17px;
+
+  border-radius:22px;
+
+  color:#fff;
+
+  background:rgba(0,45,75,.72);
+
+  border:1px solid rgba(100,220,255,.4);
+
+  backdrop-filter:blur(10px);
+
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+}
+
+
+/* fenêtre */
+
+.sakksi-chat{
+  position:absolute;
+
+  right:100px;
+  bottom:0;
+
+  width:340px;
+
+  border-radius:22px;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(0,52,88,.88),
+      rgba(0,25,55,.84)
+    );
+
+  border:1px solid rgba(90,220,255,.40);
+
+  box-shadow:
+    0 0 30px rgba(0,170,255,.20),
+    0 20px 55px rgba(0,0,0,.40);
+
+  backdrop-filter:blur(16px);
+
+  opacity:0;
+  visibility:hidden;
+
+  transform:translateX(15px) scale(.96);
+
+  transition:.3s ease;
+}
+
+.sakksi-chat.open{
+  opacity:1;
+  visibility:visible;
+  transform:translateX(0) scale(1);
+}
+
+
+.sakksi-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  padding:14px 16px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,115,185,.85),
+      rgba(0,190,220,.75)
+    );
+}
+
+.sakksi-header img{
+  width:48px;
+  height:48px;
+
+  object-fit:cover;
+  border-radius:50%;
+
+  border:2px solid white;
+}
+
+.sakksi-title{
+  flex:1;
+}
+
+.sakksi-title strong{
+  display:block;
+  color:white;
+}
+
+.sakksi-title span{
+  display:block;
+  margin-top:3px;
+
+  color:rgba(255,255,255,.8);
+  font-size:12px;
+}
+
+.sakksi-close{
+  border:none;
+  background:transparent;
+
+  color:white;
+  font-size:25px;
+
+  cursor:pointer;
+}
+
+.sakksi-content{
+  padding:20px;
+
+  color:#eafaff;
+
+  line-height:1.5;
+  font-size:14px;
+}
+
+.sakksi-content p{
+  margin-bottom:14px;
+}
+
+.sakksi-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+
+  margin-top:15px;
+}
+
+.sakksi-actions a{
+  padding:8px 12px;
+
+  border-radius:20px;
+
+  color:#dffaff;
+  text-decoration:none;
+
+  border:1px solid rgba(70,210,255,.35);
+
+  background:rgba(0,130,190,.16);
+}
+
+.sakksi-actions a:hover{
+  background:rgba(0,170,220,.30);
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .sakksi-widget{
+    right:15px;
+    bottom:15px;
+  }
+
+  .sakksi-bubble{
+    width:66px;
+    height:66px;
+  }
+
+  .sakksi-hint{
+    display:none;
+  }
+
+  .sakksi-chat{
+    position:fixed;
+
+    left:10px;
+    right:10px;
+    bottom:92px;
+
+    width:auto;
+  }
 }
 
   /* TABLETTE */
@@ -362,6 +614,133 @@
   menuToggle.addEventListener('click', () => {
     topNav.classList.toggle('open');
   });
+</script>
+
+  <!-- SAKKSI - AGENT VIRTUEL -->
+
+<div class="sakksi-widget">
+
+  <div class="sakksi-hint" id="sakksiHint">
+    Besoin d'aide ? Demandez à SAKKSI
+  </div>
+
+  <div class="sakksi-chat" id="sakksiChat">
+
+    <div class="sakksi-header">
+
+      <img
+        src="sakksi.png"
+        alt="SAKKSI - Agent virtuel de Béni Saf"
+      >
+
+      <div class="sakksi-title">
+        <strong>SAKKSI</strong>
+        <span>Votre guide virtuel de Béni Saf</span>
+      </div>
+
+      <button
+        class="sakksi-close"
+        id="sakksiClose">
+        ×
+      </button>
+
+    </div>
+
+    <div class="sakksi-content">
+
+      <p>
+        Bonjour 👋 Je suis <strong>SAKKSI</strong>,
+        votre guide virtuel de Béni Saf.
+      </p>
+
+      <p>
+        Que souhaitez-vous découvrir ?
+      </p>
+
+      <div class="sakksi-actions">
+
+        <a href="plages.html">
+          🏖️ Les plages
+        </a>
+
+        <a href="lieux.html">
+          📍 Lieux à visiter
+        </a>
+
+        <a href="hebergements.html">
+          🏠 Hébergements
+        </a>
+
+        <a href="bons-plans.html">
+          ⭐ Bons plans
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <button
+    class="sakksi-bubble"
+    id="sakksiBubble"
+    aria-label="Ouvrir SAKKSI">
+
+    <img
+      src="sakksi.png"
+      alt="SAKKSI"
+      class="sakksi-avatar">
+
+    <span class="sakksi-status"></span>
+
+  </button>
+
+</div>
+
+
+<script>
+
+const sakksiBubble =
+  document.getElementById("sakksiBubble");
+
+const sakksiChat =
+  document.getElementById("sakksiChat");
+
+const sakksiClose =
+  document.getElementById("sakksiClose");
+
+const sakksiHint =
+  document.getElementById("sakksiHint");
+
+
+sakksiBubble.addEventListener(
+  "click",
+  function(){
+
+    sakksiChat.classList.toggle("open");
+
+    if(
+      sakksiChat.classList.contains("open")
+    ){
+      sakksiHint.style.opacity="0";
+    }
+
+  }
+);
+
+
+sakksiClose.addEventListener(
+  "click",
+  function(){
+
+    sakksiChat.classList.remove("open");
+
+    sakksiHint.style.opacity="1";
+
+  }
+);
+
 </script>
 </body>
 </html>
