@@ -34,6 +34,51 @@
       backdrop-filter:blur(10px);
       -webkit-backdrop-filter:blur(10px);
     }
+    .problem-main-title{
+  margin:26px 0 14px;
+  font-size:28px;
+  font-weight:900;
+  color:#ffffff;
+  text-transform:uppercase;
+  letter-spacing:1px;
+}
+
+.illegal-map-block{
+  margin-top:24px;
+  padding:18px;
+  border-radius:20px;
+  border:1px solid rgba(95,215,255,.16);
+  background:rgba(255,255,255,.02);
+}
+
+.illegal-map-block h3{
+  margin:0 0 14px;
+  color:#82eaff;
+  font-size:20px;
+}
+
+#illegalMap{
+  width:100%;
+  height:480px;
+  border-radius:18px;
+  overflow:hidden;
+  border:1px solid rgba(95,215,255,.14);
+}
+
+.illegal-cross-icon{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:rgba(180,0,0,.88);
+  color:white;
+  font-size:18px;
+  font-weight:900;
+  border:2px solid white;
+  box-shadow:0 0 10px rgba(255,0,0,.35);
+}
     .eyebrow{margin:0 0 8px;color:#75eaff;text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:800}
     h1{margin:0;font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-1.5px}
     .intro{max-width:780px;margin:18px 0 0;color:rgba(255,255,255,.80);font-size:18px;line-height:1.75}
@@ -67,6 +112,10 @@
       .content-card p{font-size:16px}
     }
   </style>
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/>
 </head>
 <body>
   <main class="page">
@@ -136,9 +185,54 @@
     <section class="tab-panel" id="tab-problemes" role="tabpanel" hidden>
       <article class="content-card">
         <h2>Les problèmes de Béni Saf</h2>
-        <p>Cette rubrique a vocation à parler de Béni Saf telle qu'elle est réellement : ses qualités, mais aussi les difficultés rencontrées au quotidien.</p>
-        <p>Pour rester juste et crédible, cette partie sera construite à partir de faits, d'exemples précis et, lorsque cela sera possible, de témoignages ou de documents.</p>
 
+<p>
+  Cette rubrique a vocation à parler de Béni Saf telle qu'elle est réellement :
+  ses qualités, mais aussi les difficultés rencontrées au quotidien.
+</p>
+
+<h3 class="problem-main-title">LA CONSTRUCTION ILLICITE</h3>
+
+<p>
+  La construction illicite est aujourd'hui l’un des fléaux les plus visibles à Béni Saf.
+  Pour beaucoup d’habitants, ce phénomène dégrade le cadre de vie, désorganise certains espaces
+  et donne l’impression que tout n’est pas contrôlé comme cela devrait l’être.
+</p>
+
+<p>
+  De nombreux Bénisafiens ne comprennent pas comment certaines constructions peuvent voir le jour,
+  parfois dans des conditions qui suscitent de fortes interrogations, alors même qu’elles semblent
+  contraires à l’intérêt de la commune ou à l’esprit des règles d’urbanisme.
+</p>
+
+<p>
+  Beaucoup s’interrogent également sur le fait que des personnes extérieures à Béni Saf,
+  qui ne sont pas originaires de la commune, puissent parfois entreprendre des projets contestés
+  sans que cela ne provoque immédiatement une réaction forte des autorités compétentes.
+</p>
+
+<p>
+  Dans l’opinion locale, il existe un sentiment d’injustice et parfois l’impression que certains
+  bénéficient de passe-droits. Tant que l’État et les services compétents n’interviennent pas
+  de manière claire, ferme et équitable, ce malaise risque de continuer à grandir.
+</p>
+
+<p>
+  Au-delà de la question juridique, ce problème touche aussi à l’image de Béni Saf,
+  à la protection de son littoral, à l’équilibre urbain de la ville et au respect dû
+  à ses habitants.
+</p>
+
+<div class="note">
+  La carte ci-dessous a pour objectif de localiser des points signalés ou contestés.
+  Elle pourra être enrichie progressivement avec des emplacements, des observations
+  et, si possible, des éléments vérifiables.
+</div>
+
+<div class="illegal-map-block">
+  <h3>Carte des signalements</h3>
+  <div id="illegalMap"></div>
+</div>
         <div class="problem-grid">
           <div class="problem"><h3>Urbanisme et circulation</h3><p>Section à compléter avec des situations concrètes observées à Béni Saf.</p></div>
           <div class="problem"><h3>Propreté et entretien</h3><p>Section à compléter avec des exemples précis et vérifiables.</p></div>
@@ -180,5 +274,77 @@
       });
     });
   </script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+  const illegalSites = [
+    {
+      name: "Signalement 1",
+      lat: 35.3000,
+      lng: -1.3900,
+      description: "Exemple de point à documenter."
+    },
+    {
+      name: "Signalement 2",
+      lat: 35.3040,
+      lng: -1.4010,
+      description: "Autre emplacement à compléter."
+    }
+  ];
+
+  let illegalMap;
+  let illegalMapInitialized = false;
+
+  function initIllegalMap(){
+    if(illegalMapInitialized) return;
+
+    const mapContainer = document.getElementById("illegalMap");
+    if(!mapContainer) return;
+
+    illegalMap = L.map("illegalMap").setView([35.302, -1.395], 13);
+
+    L.tileLayer(
+      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {
+        maxZoom: 19,
+        attribution: "&copy; OpenStreetMap contributors"
+      }
+    ).addTo(illegalMap);
+
+    const redCrossIcon = L.divIcon({
+      className: "",
+      html: '<div class="illegal-cross-icon">✖</div>',
+      iconSize: [26, 26],
+      iconAnchor: [13, 13]
+    });
+
+    illegalSites.forEach((site) => {
+      L.marker([site.lat, site.lng], { icon: redCrossIcon })
+        .addTo(illegalMap)
+        .bindPopup(`
+          <strong>${site.name}</strong><br>
+          ${site.description}
+        `);
+    });
+
+    illegalMapInitialized = true;
+  }
+
+  const problemTabButton = document.querySelector('[data-tab="tab-problemes"]');
+
+  if(problemTabButton){
+    problemTabButton.addEventListener("click", () => {
+      setTimeout(() => {
+        initIllegalMap();
+        if(illegalMap){
+          illegalMap.invalidateSize();
+        }
+      }, 120);
+    });
+  }
+
+  if(document.getElementById("tab-problemes")?.classList.contains("active")){
+    initIllegalMap();
+  }
+</script>
 </body>
 </html>
