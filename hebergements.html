@@ -4,73 +4,205 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Hébergements à Béni Saf – Appartements, villas et cabanons | benisaf.fr</title>
+  <title>Hébergements à Béni Saf – Hôtels, locations de vacances, villas et appartements | benisaf.fr</title>
 
   <meta name="description"
-        content="Découvrez prochainement des hébergements à Béni Saf : appartements, villas, cabanons et locations pour vos séjours au bord de la mer.">
+        content="Découvrez les hébergements à Béni Saf en Algérie : hôtels, locations de vacances, villas, appartements et logements près de la Plage du Puits, Rachgoun et Madrid Plage.">
 
   <link rel="canonical" href="https://benisaf.fr/hebergements.html">
 
   <style>
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
     body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,#04111c,#061b2a);
-      color:#fff;
-      min-height:100vh;
+      margin:0; min-height:100vh; font-family:Arial, Helvetica, sans-serif; color:#fff;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(0,170,230,.14), transparent 30%),
+        radial-gradient(circle at 82% 16%, rgba(30,115,180,.12), transparent 34%),
+        linear-gradient(180deg,#03111d 0%,#061a29 48%,#04131f 100%);
     }
-
-    .page{
-      max-width:1000px;
-      margin:auto;
-      padding:60px 24px;
+    a{color:#7ce9ff;text-decoration:none;}
+    a:hover{color:#fff;}
+    .page{width:min(1120px, calc(100% - 32px));margin:0 auto;padding:42px 0 70px;}
+    .back{display:inline-flex;align-items:center;gap:8px;margin-bottom:30px;color:#8beaff;font-size:15px;}
+    .hero{
+      position:relative;overflow:hidden;padding:36px 34px 32px;border-radius:28px;
+      border:1px solid rgba(105,220,255,.20);
+      background:linear-gradient(145deg, rgba(10,65,110,.34), rgba(3,27,49,.24));
+      box-shadow:0 18px 50px rgba(0,0,0,.24), inset 0 0 30px rgba(80,210,255,.025);
+      backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
     }
-
-    a{
-      color:#6fdcff;
-      text-decoration:none;
-    }
-
-    h1{
-      font-size:42px;
-      margin-bottom:20px;
-    }
-
-    p{
-      line-height:1.7;
-      color:rgba(255,255,255,.82);
-      font-size:18px;
-    }
-
-    .box{
-      margin-top:30px;
-      padding:24px;
-      border-radius:18px;
-      border:1px solid rgba(80,200,255,.30);
-      background:rgba(255,255,255,.04);
+    .hero::after{content:"";position:absolute;width:250px;height:250px;right:-90px;top:-100px;border-radius:50%;background:rgba(80,220,255,.08);filter:blur(18px);pointer-events:none;}
+    .eyebrow{margin:0 0 9px;color:#76eaff;text-transform:uppercase;letter-spacing:2px;font-size:13px;font-weight:800;}
+    h1{margin:0;font-size:clamp(38px,6vw,66px);line-height:1.04;letter-spacing:-1.4px;}
+    .intro{max-width:860px;margin:18px 0 0;color:rgba(255,255,255,.82);font-size:18px;line-height:1.75;}
+    .quick-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+    .quick-link{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid rgba(105,220,255,.20);background:rgba(255,255,255,.035);color:#dff9ff;font-size:14px;}
+    .tabs{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 20px;padding:8px;border:1px solid rgba(98,218,255,.14);border-radius:20px;background:rgba(2,24,43,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}
+    .tab-btn{appearance:none;border:1px solid rgba(110,220,255,.16);background:rgba(255,255,255,.025);color:rgba(255,255,255,.78);padding:13px 18px;border-radius:14px;cursor:pointer;font-size:15px;font-weight:700;transition:.22s ease;}
+    .tab-btn:hover{color:#fff;border-color:rgba(120,230,255,.34);transform:translateY(-1px);}
+    .tab-btn.active{color:#fff;background:linear-gradient(145deg, rgba(22,151,205,.60), rgba(10,89,145,.55));border-color:rgba(116,232,255,.55);box-shadow:0 0 18px rgba(0,190,255,.15);}
+    .tab-panel{display:none;animation:fadeIn .28s ease;}
+    .tab-panel.active{display:block;}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+    .content-card{padding:30px;border:1px solid rgba(90,205,255,.17);border-radius:24px;background:linear-gradient(145deg, rgba(7,45,78,.32), rgba(2,23,41,.35));box-shadow:0 16px 45px rgba(0,0,0,.22), inset 0 0 24px rgba(70,190,255,.02);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}
+    .content-card h2{margin:0 0 18px;font-size:30px;color:#fff;}
+    .content-card h3{margin:28px 0 10px;color:#82eaff;font-size:20px;}
+    .content-card p{margin:0 0 15px;color:rgba(255,255,255,.82);font-size:17px;line-height:1.78;}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px;}
+    .mini-card{padding:19px;border-radius:18px;border:1px solid rgba(95,215,255,.15);background:rgba(255,255,255,.025);}
+    .mini-card strong{display:block;margin-bottom:8px;color:#7deaff;font-size:16px;}
+    .mini-card span{color:rgba(255,255,255,.72);line-height:1.6;font-size:14px;}
+    .note{margin-top:24px;padding:18px 20px;border-left:3px solid #6fe8ff;border-radius:14px;background:rgba(20,120,180,.08);color:rgba(255,255,255,.77);line-height:1.7;}
+    .visit{margin-top:26px;padding:26px;border-radius:24px;border:1px solid rgba(100,220,255,.16);background:rgba(3,28,49,.42);}
+    .visit h2{margin:0 0 10px;font-size:26px;}
+    .visit p{margin:0 0 18px;color:rgba(255,255,255,.76);line-height:1.7;}
+    .visit-links{display:flex;flex-wrap:wrap;gap:10px;}
+    .visit-links a{padding:11px 15px;border-radius:14px;border:1px solid rgba(100,220,255,.20);background:rgba(255,255,255,.035);color:#e8fbff;font-weight:700;font-size:14px;transition:.2s ease;}
+    .visit-links a:hover{transform:translateY(-1px);border-color:rgba(100,230,255,.42);background:rgba(30,130,180,.12);}
+    @media(max-width:760px){
+      .page{width:min(100% - 20px,1120px);padding-top:22px;}
+      .hero,.content-card,.visit{padding:22px;border-radius:20px;}
+      .tabs{gap:8px;}
+      .tab-btn{flex:1 1 100%;text-align:left;}
+      .grid{grid-template-columns:1fr;}
+      .intro,.content-card p{font-size:16px;}
     }
   </style>
 </head>
-
 <body>
   <main class="page">
+    <a class="back" href="index.html">← Retour à l'accueil</a>
 
-    <a href="index.html">← Retour à l'accueil</a>
+    <section class="hero">
+      <p class="eyebrow">Séjourner à Béni Saf</p>
+      <h1>Hébergements à Béni Saf</h1>
+      <p class="intro">Béni Saf est une charmante ville côtière et portuaire située dans la wilaya d'Aïn Témouchent, dans l'ouest de l'Algérie. Très appréciée pour les vacances familiales, ses plages et son authenticité, elle offre différentes possibilités de séjour : hôtels, locations de vacances, villas, appartements, résidences et logements proches de la mer.</p>
+      <p class="intro">En famille, à deux ou entre amis, découvrez les différentes façons de vous loger à Béni Saf pour un court séjour, des vacances, une location de moyenne durée ou un séjour plus long.</p>
+      <div class="quick-links">
+        <span class="quick-link">🏖️ Plage du Puits</span>
+        <span class="quick-link">🌊 Rachgoun</span>
+        <span class="quick-link">☀️ Madrid Plage</span>
+        <span class="quick-link">⚓ Ville portuaire</span>
+      </div>
+    </section>
 
-    <h1>Hébergements à Béni Saf</h1>
-
-    <p>
-      Vous recherchez un appartement, une villa, un cabanon ou une location
-      pour votre séjour à Béni Saf ? Cette page sera prochainement enrichie
-      avec une sélection d'hébergements disponibles dans la ville et ses environs.
-    </p>
-
-    <div class="box">
-      <strong>À venir :</strong>
-      appartements, villas, cabanons, locations saisonnières et hébergements
-      proches des plages de Béni Saf.
+    <div class="tabs" role="tablist" aria-label="Types d'hébergements à Béni Saf">
+      <button class="tab-btn active" type="button" role="tab" aria-selected="true" aria-controls="tab-hotels" data-tab="tab-hotels">Hôtels</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-locations" data-tab="tab-locations">Locations saisonnières</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-villas" data-tab="tab-villas">Villas & appartements</button>
+      <button class="tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-conseils" data-tab="tab-conseils">Conseils pour se loger</button>
     </div>
 
+    <section class="tab-panel active" id="tab-hotels" role="tabpanel">
+      <article class="content-card">
+        <h2>Hôtels à Béni Saf</h2>
+        <p>Pour découvrir Béni Saf dans de bonnes conditions, les hôtels et résidences peuvent constituer une solution simple pour les voyageurs qui souhaitent profiter de la ville, du port et des plages sans avoir à gérer les contraintes d'une location indépendante.</p>
+        <p>Selon la période de l'année et le type de séjour recherché, les voyageurs peuvent privilégier un hébergement proche du centre-ville, du port ou du littoral. Béni Saf peut également servir de point de départ pour explorer les plages et les sites de la région.</p>
+        <h3>Pour quel type de séjour ?</h3>
+        <div class="grid">
+          <div class="mini-card"><strong>Court séjour</strong><span>Une solution pratique pour une ou plusieurs nuits lors d'un passage à Béni Saf.</span></div>
+          <div class="mini-card"><strong>Vacances en famille</strong><span>Une base confortable pour profiter de la mer, des plages et des activités de la région.</span></div>
+          <div class="mini-card"><strong>Séjour en couple</strong><span>Pour découvrir Béni Saf, son littoral, son port et son ambiance méditerranéenne.</span></div>
+          <div class="mini-card"><strong>Voyage en Algérie</strong><span>Béni Saf peut s'intégrer naturellement à un itinéraire sur la côte ouest algérienne.</span></div>
+        </div>
+        <div class="note">Cette rubrique pourra être enrichie progressivement avec des établissements vérifiés, leurs coordonnées, leur localisation et les services proposés.</div>
+      </article>
+    </section>
+
+    <section class="tab-panel" id="tab-locations" role="tabpanel" hidden>
+      <article class="content-card">
+        <h2>Locations de vacances à Béni Saf</h2>
+        <p>Découvrez les différentes possibilités de locations de vacances dans la daïra de Béni Saf. En famille, à deux ou entre amis, l'objectif est de trouver le logement qui correspond à votre séjour et à votre budget.</p>
+        <p>Les locations saisonnières peuvent convenir aussi bien à un week-end qu'à plusieurs semaines. Selon les périodes, les visiteurs peuvent rechercher des locations à petits prix, des offres de dernière minute ou des logements situés à proximité immédiate des plages.</p>
+        <h3>Où chercher une location ?</h3>
+        <div class="grid">
+          <div class="mini-card"><strong>Plage du Puits</strong><span>Un secteur recherché pour séjourner près de la mer et profiter de la plage.</span></div>
+          <div class="mini-card"><strong>Rachgoun</strong><span>Une destination appréciée pour les vacances et les séjours tournés vers le littoral.</span></div>
+          <div class="mini-card"><strong>Madrid Plage</strong><span>Une autre possibilité pour rechercher un hébergement proche de la plage.</span></div>
+          <div class="mini-card"><strong>Centre de Béni Saf</strong><span>Pratique pour rester proche des commerces, du port et des services de la ville.</span></div>
+        </div>
+        <h3>Des séjours de différentes durées</h3>
+        <p>Les locations peuvent répondre aux besoins des courts séjours, des vacances d'été, mais aussi des locations de moyenne et longue durée. Il est conseillé de vérifier les conditions de location, les équipements disponibles et la localisation exacte avant toute réservation.</p>
+      </article>
+    </section>
+
+    <section class="tab-panel" id="tab-villas" role="tabpanel" hidden>
+      <article class="content-card">
+        <h2>Villas & appartements à Béni Saf</h2>
+        <p>Pour les familles et les groupes d'amis, la location d'une villa, d'un appartement ou d'une maison peut offrir davantage d'espace et d'autonomie pendant les vacances.</p>
+        <h3>Béni Saf, proche de la plage</h3>
+        <p>De nombreux visiteurs recherchent une location à Béni Saf près de la plage, voire un logement « pied dans l'eau ». La proximité de la mer peut constituer un vrai avantage pour les séjours estivaux, en particulier avec des enfants.</p>
+        <div class="grid">
+          <div class="mini-card"><strong>Appartements</strong><span>Pour un séjour pratique en ville ou dans les quartiers proches du littoral.</span></div>
+          <div class="mini-card"><strong>Villas</strong><span>Une solution intéressante pour les familles nombreuses ou les groupes.</span></div>
+          <div class="mini-card"><strong>Résidences</strong><span>Des solutions intermédiaires entre appartement indépendant et hébergement touristique.</span></div>
+          <div class="mini-card"><strong>Logements insolites</strong><span>Une catégorie qui pourra être développée si des offres locales adaptées sont identifiées.</span></div>
+        </div>
+        <p style="margin-top:22px;">Cette rubrique pourra aussi présenter, lorsqu'elles seront vérifiées, des résidences de vacances, des villages vacances ou d'autres formules d'hébergement adaptées aux séjours familiaux.</p>
+      </article>
+    </section>
+
+    <section class="tab-panel" id="tab-conseils" role="tabpanel" hidden>
+      <article class="content-card">
+        <h2>Conseils pour se loger à Béni Saf</h2>
+        <p>Avant de réserver un hébergement, il est utile de définir le type de séjour souhaité : proximité de la plage, accès au centre-ville, environnement calme, vacances familiales, séjour de courte durée ou installation pour plusieurs semaines.</p>
+        <h3>Bien choisir son secteur</h3>
+        <p>Pour des vacances principalement tournées vers la mer, les secteurs proches de la Plage du Puits, de Rachgoun ou de Madrid Plage peuvent être particulièrement intéressants. Pour accéder facilement aux commerces, au port et aux services, un logement situé plus près du centre de Béni Saf peut être plus pratique.</p>
+        <h3>Réserver avec prudence</h3>
+        <div class="grid">
+          <div class="mini-card"><strong>Vérifiez l'adresse</strong><span>Demandez la localisation exacte du logement avant de réserver.</span></div>
+          <div class="mini-card"><strong>Demandez des photos récentes</strong><span>Les photos permettent de mieux évaluer l'état et les équipements du logement.</span></div>
+          <div class="mini-card"><strong>Confirmez les équipements</strong><span>Climatisation, eau, cuisine, stationnement et couchages peuvent être importants selon la saison.</span></div>
+          <div class="mini-card"><strong>Clarifiez le tarif</strong><span>Vérifiez le prix total du séjour, les éventuels frais supplémentaires et les conditions d'annulation.</span></div>
+        </div>
+        <h3>Courts et longs séjours</h3>
+        <p>Béni Saf peut accueillir des visiteurs pour quelques jours, des vacances estivales, mais également pour des séjours de moyenne ou longue durée. Les besoins ne sont pas les mêmes : pour un long séjour, la proximité des commerces, des transports et des services peut devenir aussi importante que la proximité de la plage.</p>
+        <div class="note">Les formules « tout compris », les voyages clé en main, les colonies de vacances ou les villages vacances ne seront présentés sur benisaf.fr que lorsque des offres locales réelles et vérifiables seront disponibles.</div>
+      </article>
+    </section>
+
+    <section class="visit">
+      <h2>Que visiter pendant votre séjour à Béni Saf ?</h2>
+      <p>Béni Saf est une ville portuaire de la côte ouest algérienne. Un séjour dans la région peut associer plages, découverte du port, promenades, patrimoine et excursions dans les environs.</p>
+      <div class="visit-links">
+        <a href="plages.html">Découvrir les plages</a>
+        <a href="lieux.html">Lieux à visiter</a>
+        <a href="bons-plans.html">Vivre à Béni Saf</a>
+        <a href="videos.html">Vidéos de Béni Saf</a>
+        <a href="photos.html">Photos de Béni Saf</a>
+      </div>
+    </section>
   </main>
+
+  <script>
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabPanels = document.querySelectorAll(".tab-panel");
+
+    tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetId = button.dataset.tab;
+
+        tabButtons.forEach((btn) => {
+          btn.classList.remove("active");
+          btn.setAttribute("aria-selected", "false");
+        });
+
+        tabPanels.forEach((panel) => {
+          panel.classList.remove("active");
+          panel.hidden = true;
+        });
+
+        button.classList.add("active");
+        button.setAttribute("aria-selected", "true");
+
+        const targetPanel = document.getElementById(targetId);
+        if(targetPanel){
+          targetPanel.hidden = false;
+          targetPanel.classList.add("active");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
