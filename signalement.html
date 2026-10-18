@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Signaler une construction ou une occupation du littoral - Béni Saf</title>
+
+  <meta name="description"
+        content="Formulaire de signalement pour documenter les constructions potentiellement irrégulières et les occupations contestées du domaine maritime à Béni Saf.">
+
+  <link rel="canonical" href="https://benisaf.fr/signalement.html">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      color: white;
+      background:
+        linear-gradient(
+          rgba(0, 54, 100, 0.72),
+          rgba(0, 43, 78, 0.84)
+        ),
+        url("vitrine.png");
+
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+
+      padding: 40px 20px;
+    }
+
+    .contact-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+
+      background: rgba(0, 45, 85, 0.76);
+
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 28px;
+
+      padding: 45px;
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.32),
+        0 0 30px rgba(0, 160, 255, 0.12);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .logo p {
+      font-size: 13px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #d9f3ff;
+    }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .intro h2 {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .intro p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #e3f3ff;
+    }
+
+    .info-box {
+      margin: 0 0 28px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(110, 220, 255, .30);
+      background: rgba(0, 120, 180, .10);
+      color: #e9f9ff;
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .info-box strong {
+      color: white;
+    }
+
+    form {
+      display: grid;
+      gap: 20px;
+    }
+
+    .field-group {
+      display: grid;
+      gap: 8px;
+    }
+
+    label {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .optional {
+      font-weight: 400;
+      opacity: .78;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+
+      padding: 14px 16px;
+
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+
+      background: rgba(255, 255, 255, 0.10);
+
+      color: white;
+
+      font-size: 16px;
+
+      outline: none;
+
+      transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255, 255, 255, 0.62);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #6ed8ff;
+
+      background: rgba(255, 255, 255, 0.14);
+
+      box-shadow:
+        0 0 0 3px rgba(0, 190, 255, 0.12),
+        0 0 18px rgba(0, 180, 255, 0.18);
+    }
+
+    select option {
+      color: #111;
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .small-help {
+      font-size: 12px;
+      line-height: 1.55;
+      color: rgba(220, 245, 255, .72);
+    }
+
+    .check-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.20);
+      background: rgba(255,255,255,.05);
+    }
+
+    .check-row input {
+      width: auto;
+      margin-top: 4px;
+      flex: 0 0 auto;
+    }
+
+    .check-row label {
+      font-weight: 400;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .submit-btn {
+      margin-top: 10px;
+
+      padding: 15px 28px;
+
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          90deg,
+          #0078c8,
+          #00aeea
+        );
+
+      color: white;
+
+      font-size: 17px;
+      font-weight: 700;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 0 18px rgba(0, 180, 255, 0.30);
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 0 24px rgba(0, 210, 255, 0.50);
+    }
+
+    .notice {
+      margin-top: 10px;
+
+      font-size: 13px;
+      line-height: 1.6;
+
+      color: #cbeaff;
+
+      text-align: center;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 28px;
+      color: white;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 700;
+      transition: opacity 0.25s ease;
+    }
+
+    .back:hover {
+      opacity: 0.75;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px 12px;
+        background-attachment: scroll;
+      }
+
+      .contact-container {
+        padding: 30px 20px;
+        border-radius: 22px;
+      }
+
+      .logo h1 {
+        font-size: 34px;
+      }
+
+      .intro h2 {
+        font-size: 24px;
+      }
+
+      .intro p {
+        font-size: 15px;
+      }
+
+      input,
+      select,
+      textarea {
+        font-size: 15px;
+      }
+
+      .submit-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="contact-container">
+
+    <div class="logo">
+      <h1>Béni Saf</h1>
+      <p>Authentique & Naturelle</p>
+    </div>
+
+    <div class="intro">
+      <h2>Faire un signalement</h2>
+
+      <p>
+        Bénisafiennes et Bénisafiens, vous pouvez contribuer à enrichir la carte
+        des signalements concernant les constructions potentiellement irrégulières
+        et les occupations contestées du domaine maritime à Béni Saf.
+      </p>
+    </div>
+
+    <div class="info-box">
+      Plusieurs signalements ont déjà été reçus et répertoriés sur la carte.
+      Si vous connaissez un autre emplacement, transmettez-nous sa localisation
+      et les éléments dont vous disposez. <strong>Les photos sont particulièrement utiles</strong>
+      pour mieux documenter un signalement.
+      <br><br>
+      Merci à toutes les personnes qui ont déjà contribué et à celles qui participeront
+      à enrichir cette base de manière précise et documentée.
+    </div>
+
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+      <input
+        type="hidden"
+        name="access_key"
+        value="ab740c81-3ce2-49db-b44a-34582b894e7d"
+      >
+
+      <input
+        type="hidden"
+        name="subject"
+        value="Nouveau signalement depuis benisaf.fr"
+      >
+
+      <input
+        type="hidden"
+        name="redirect"
+        value="https://www.benisaf.fr/merci.html"
+      >
+
+      <div class="field-group">
+        <label for="type">Type de signalement *</label>
+
+        <select id="type" name="type" required>
+          <option value="">Choisissez une option</option>
+          <option value="construction-potentiellement-illicite">
+            Construction potentiellement illicite
+          </option>
+          <option value="occupation-domaine-maritime">
+            Occupation contestée du domaine maritime
+          </option>
+          <option value="autre-urbanisme">
+            Autre problème d'urbanisme
+          </option>
+          <option value="autre">
+            Autre signalement
+          </option>
+        </select>
+      </div>
+
+      <div class="field-group">
+        <label for="location">Emplacement précis *</label>
+
+        <input
+          type="text"
+          id="location"
+          name="location"
+          placeholder="Quartier, rue, plage, point de repère..."
+          required
+        >
+
+        <div class="small-help">
+          Indiquez le plus précisément possible où se trouve le lieu concerné.
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="coordinates">
+          Coordonnées GPS <span class="optional">(facultatif)</span>
+        </label>
+
+        <input
+          type="text"
+          id="coordinates"
+          name="coordinates"
+          placeholder="Ex. 35.301234, -1.402345"
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="message">Description du signalement *</label>
+
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Décrivez ce que vous avez constaté, depuis quand, et tout élément utile..."
+          required
+        ></textarea>
+      </div>
+
+      <div class="field-group">
+        <label for="photo_link">
+          Photos / documents <span class="optional">(facultatif)</span>
+        </label>
+
+        <input
+          type="url"
+          id="photo_link"
+          name="photo_link"
+          placeholder="Lien Google Drive, Dropbox, OneDrive, etc."
+        >
+
+        <div class="small-help">
+          Vous pouvez partager ici un lien vers une ou plusieurs photos ou documents.
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label for="name">
+          Nom ou pseudonyme <span class="optional">(facultatif)</span>
+        </label>
+
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Votre nom ou un pseudonyme"
+        >
+      </div>
+
+      <div class="field-group">
+        <label for="email">
+          Email <span class="optional">(facultatif)</span>
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="votre@email.com"
+        >
+
+        <div class="small-help">
+          Utile uniquement si nous devons vous demander une précision sur le signalement.
+        </div>
+      </div>
+
+      <div class="check-row">
+        <input
+          type="checkbox"
+          id="goodfaith"
+          name="declaration_bonne_foi"
+          value="oui"
+          required
+        >
+
+        <label for="goodfaith">
+          Je confirme transmettre ce signalement de bonne foi et que les informations
+          indiquées correspondent, à ma connaissance, à ce que j'ai constaté.
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        Envoyer le signalement
+      </button>
+
+      <p class="notice">
+        Les informations reçues sont examinées avant toute éventuelle publication.
+        Un signalement ne constitue pas, à lui seul, la preuve juridique du caractère
+        illicite d'une construction ou d'une occupation.
+      </p>
+
+    </form>
+
+    <a href="bons-plans.html" class="back">
+      ← Retour à Vivre à Béni Saf
+    </a>
+
+  </main>
+
+</body>
+</html>
