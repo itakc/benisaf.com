@@ -341,13 +341,40 @@
 
     illegalMap = L.map("illegalMap").setView([35.302, -1.395], 13);
 
-    L.tileLayer(
-      "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors"
-      }
-    ).addTo(illegalMap);
+    const streetMap = L.tileLayer(
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+  {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap contributors"
+  }
+);
+
+const satelliteMap = L.tileLayer(
+  "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+  {
+    maxZoom: 19,
+    attribution: "Tiles &copy; Esri"
+  }
+);
+
+
+/* CARTE AFFICHÉE PAR DÉFAUT */
+
+satelliteMap.addTo(illegalMap);
+
+
+/* BOUTON PLAN / SATELLITE */
+
+L.control.layers(
+  {
+    "Plan": streetMap,
+    "Satellite": satelliteMap
+  },
+  null,
+  {
+    position: "topright"
+  }
+).addTo(illegalMap);
 
     const redCrossIcon = L.divIcon({
       className: "",
