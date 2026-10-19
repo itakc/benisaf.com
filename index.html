@@ -173,11 +173,12 @@
   position:relative;
 
   width:145px;
-  height:220px;
+  height:245px;
 
   display:flex;
-  align-items:flex-end;
-  justify-content:center;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
 
   cursor:pointer;
 
@@ -197,7 +198,7 @@
   height:auto !important;
 
   max-width:145px !important;
-  max-height:220px !important;
+  max-height:210px !important;
 
   object-fit:contain;
 
@@ -206,14 +207,17 @@
     drop-shadow(0 0 22px rgba(0,150,255,.55));
 }
 
+
+/* HALO AU SOL */
+
 .sakksi-glow{
   position:absolute;
 
   left:50%;
-  bottom:2px;
+  bottom:20px;
 
   width:115px;
-  height:22px;
+  height:20px;
 
   transform:translateX(-50%);
 
@@ -227,36 +231,28 @@
 }
 
 
-/* PETITE BULLE */
+/* PETIT TEXTE SOUS SAKKSI */
 
-.sakksi-hint{
-  position:absolute;
+.sakksi-mini-label{
+  position:relative;
+  z-index:2;
 
-  right:155px;
-  bottom:40px;
+  margin-top:2px;
+
+  font-size:12px;
+  font-weight:700;
+
+  color:rgba(230,250,255,.95);
+
+  letter-spacing:.4px;
+
+  text-align:center;
 
   white-space:nowrap;
 
-  padding:9px 15px;
-
-  border-radius:22px;
-
-  color:#fff;
-
-  background:rgba(3,35,66,.52);
-
-  border:
-    1px solid rgba(90,220,255,.32);
-
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-
-  box-shadow:
-    0 6px 22px rgba(0,0,0,.22);
-
-  transition:
-    opacity .25s ease,
-    visibility .25s ease;
+  text-shadow:
+    0 0 5px rgba(0,190,255,.55),
+    0 0 10px rgba(0,160,255,.28);
 }
 
 
@@ -279,8 +275,8 @@
   background:
     linear-gradient(
       145deg,
-      rgba(12,72,120,.46),
-      rgba(3,34,70,.38)
+      rgba(12,72,120,.30),
+      rgba(3,34,70,.24)
     );
 
   border:
@@ -410,8 +406,8 @@
   background:
     linear-gradient(
       145deg,
-      rgba(30,105,170,.12),
-      rgba(5,48,100,.16)
+      rgba(30,105,170,.08),
+      rgba(5,48,100,.10)
     );
 
   border:
@@ -464,7 +460,7 @@
   outline:none;
 
   background:
-    rgba(2,29,61,.50);
+    rgba(2,29,61,.34);
 
   color:white;
 
@@ -551,16 +547,21 @@
 
   .sakksi-avatar-wrap{
     width:100px;
-    height:155px;
+    height:175px;
   }
 
   .sakksi-avatar{
     max-width:100px !important;
-    max-height:155px !important;
+    max-height:150px !important;
   }
 
-  .sakksi-hint{
-    display:none;
+  .sakksi-mini-label{
+    font-size:10px;
+  }
+
+  .sakksi-glow{
+    bottom:18px;
+    width:85px;
   }
 
   .sakksi-chat{
@@ -568,7 +569,7 @@
 
     left:12px;
     right:12px;
-    bottom:165px;
+    bottom:175px;
 
     width:auto;
 
@@ -819,77 +820,83 @@
   });
 </script>
 
-  <!-- SAKKSI - AGENT VIRTUEL -->
+ <!-- SAKKSI - AGENT VIRTUEL -->
 
 <div class="sakksi-widget">
 
-  <div class="sakksi-hint" id="sakksiHint">
-    Besoin d'aide ? Demandez à SAKKSI
-  </div>
-
   <div class="sakksi-chat" id="sakksiChat">
 
-  <div class="sakksi-header">
+    <div class="sakksi-header">
 
-    <div class="sakksi-title">
-      <strong>SAKKSI • ASSISTANTE IA</strong>
-    </div>
-
-    <button
-      class="sakksi-close"
-      id="sakksiClose"
-      aria-label="Fermer SAKKSI">
-      ×
-    </button>
-
-  </div>
-
-  <div class="sakksi-content">
-
-    <div class="sakksi-message">
-      <p>
-        Bonjour, je suis <strong>SAKKSI</strong>.<br>
-        Comment puis-je vous aider aujourd’hui ?
-      </p>
-    </div>
-
-    <div class="sakksi-input-row">
-
-      <input
-        type="text"
-        id="sakksiInput"
-        class="sakksi-input"
-        placeholder="Posez votre question..."
-        autocomplete="off"
-      >
+      <div class="sakksi-title">
+        <strong>SAKKSI • ASSISTANTE IA</strong>
+      </div>
 
       <button
-        id="sakksiSend"
-        class="sakksi-send"
-        aria-label="Envoyer">
-        ➤
+        class="sakksi-close"
+        id="sakksiClose"
+        aria-label="Fermer SAKKSI">
+        ×
       </button>
 
     </div>
 
+
+    <div class="sakksi-content">
+
+      <div class="sakksi-message">
+        <p>
+          Bonjour, je suis <strong>SAKKSI</strong>.<br>
+          Comment puis-je vous aider aujourd’hui ?
+        </p>
+      </div>
+
+
+      <div class="sakksi-input-row">
+
+        <input
+          type="text"
+          id="sakksiInput"
+          class="sakksi-input"
+          placeholder="Posez votre question..."
+          autocomplete="off"
+        >
+
+        <button
+          id="sakksiSend"
+          class="sakksi-send"
+          aria-label="Envoyer">
+          ➤
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div
+    class="sakksi-avatar-wrap"
+    id="sakksiBubble"
+    role="button"
+    tabindex="0"
+    aria-label="Ouvrir SAKKSI">
+
+    <div class="sakksi-glow"></div>
+
+    <img
+      src="sakksi.png"
+      alt="SAKKSI - Assistante virtuelle de Béni Saf"
+      class="sakksi-avatar">
+
+    <div class="sakksi-mini-label">
+      Demander SAKKSI
+    </div>
+
   </div>
 
 </div>
-
-
-  <div class="sakksi-avatar-wrap" id="sakksiBubble">
-
-  <div class="sakksi-glow"></div>
-
-  <img
-    src="sakksi.png"
-    alt="SAKKSI - Assistante virtuelle de Béni Saf"
-    class="sakksi-avatar">
-
-</div>
-
-</div>
-
 
 <script>
 
@@ -902,20 +909,30 @@ const sakksiChat =
 const sakksiClose =
   document.getElementById("sakksiClose");
 
-const sakksiHint =
-  document.getElementById("sakksiHint");
+
+function toggleSakksi(){
+
+  sakksiChat.classList.toggle("open");
+
+}
 
 
 sakksiBubble.addEventListener(
   "click",
-  function(){
+  toggleSakksi
+);
 
-    sakksiChat.classList.toggle("open");
+
+sakksiBubble.addEventListener(
+  "keydown",
+  function(event){
 
     if(
-      sakksiChat.classList.contains("open")
+      event.key === "Enter" ||
+      event.key === " "
     ){
-      sakksiHint.style.opacity="0";
+      event.preventDefault();
+      toggleSakksi();
     }
 
   }
@@ -924,11 +941,11 @@ sakksiBubble.addEventListener(
 
 sakksiClose.addEventListener(
   "click",
-  function(){
+  function(event){
+
+    event.stopPropagation();
 
     sakksiChat.classList.remove("open");
-
-    sakksiHint.style.opacity="1";
 
   }
 );
