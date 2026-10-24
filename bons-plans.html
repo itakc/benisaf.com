@@ -382,6 +382,24 @@
 
   color:#ffffff;
 }
+    .press-article-image{
+  width:100%;
+  margin:20px 0;
+  text-align:center;
+}
+
+.press-article-image img{
+  display:block;
+  width:auto;
+  max-width:100%;
+  max-height:500px;
+  margin:0 auto;
+
+  border-radius:14px;
+
+  box-shadow:
+    0 8px 26px rgba(0,0,0,.28);
+}
   </style>
   <link
   rel="stylesheet"
@@ -553,15 +571,32 @@
 
   <div class="press-item">
 
-    <a
-      href="https://elwatan.dz/la-plage-du-puits-de-benisaf-etait-une-plage-aux-romantiques-suite-et-fin/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="press-link">
+    <div class="press-item">
 
-      El Watan — La Plage du Puits de Béni Saf était une plage aux romantiques
+  <a
+    href="https://elwatan.dz/la-plage-du-puits-de-benisaf-etait-une-plage-aux-romantiques-suite-et-fin/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="press-link">
 
-    </a>
+    El Watan — La Plage du Puits de Béni Saf était une plage aux romantiques
+
+  </a>
+
+  <div class="press-article-image">
+    <img
+      src="elwatan_plagedupuit.png"
+      alt="Plage du Puits à Béni Saf - illustration de l'article El Watan"
+    >
+  </div>
+
+  <p class="press-desc">
+    Article consacré à la Plage du Puits et à son évolution,
+    entre le souvenir de son cadre d'autrefois et les transformations
+    qu'elle a connues au fil des années.
+  </p>
+
+</div>
 
     <p class="press-desc">
       Article consacré à la Plage du Puits et à son évolution,
@@ -845,7 +880,14 @@
        
       description: "Construction illicite."
     },
-  
+    {
+     name: "Signalement 10",
+      lat: 35.301638656607736,
+      lng: -1.398771224253038
+       
+      description: "Construction illicite."
+    },
+   
   ];
 
   let illegalMap;
