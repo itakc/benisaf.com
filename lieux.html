@@ -2,71 +2,154 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
- <title>Lieux à visiter à Béni Saf – Patrimoine, plages et sites incontournables | benisaf.fr</title>
-<meta name="description" content="Découvrez les lieux à visiter à Béni Saf : plages, port, Rachgoun, patrimoine, paysages et sites incontournables.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#04111c">
+  <meta name="description" content="La plage du Puits à Béni Saf : voyage dans le temps à travers dix photographies anciennes restaurées en couleurs, ses villas et ses souvenirs.">
   <link rel="canonical" href="https://benisaf.fr/lieux.html">
-
+  <title>La plage du Puits d’antan – Photos et histoire | benisaf.fr</title>
   <style>
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      background:linear-gradient(180deg,#04111c,#061b2a);
-      color:#fff;
-      min-height:100vh;
-    }
-
-    .page{
-      max-width:1000px;
-      margin:auto;
-      padding:60px 24px;
-    }
-
-    a{
-      color:#6fdcff;
-      text-decoration:none;
-    }
-
-    h1{
-      font-size:42px;
-      margin-bottom:20px;
-    }
-
-    p{
-      line-height:1.7;
-      color:rgba(255,255,255,.82);
-      font-size:18px;
-    }
-
-    .box{
-      margin-top:30px;
-      padding:24px;
-      border-radius:18px;
-      border:1px solid rgba(80,200,255,.30);
-      background:rgba(255,255,255,.04);
-    }
+    :root{color-scheme:dark;--accent:#72dbf5;--muted:rgba(255,255,255,.75)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#fff;background:linear-gradient(180deg,#04111c,#061b2a 65%,#04111c);min-height:100vh}
+    a{color:var(--accent)}
+    button{font:inherit}
+    .page{max-width:1200px;margin:auto;padding:32px 20px 70px}
+    .back{display:inline-block;text-decoration:none;margin-bottom:32px}
+    .intro{text-align:center;margin:0 auto 30px;max-width:820px}
+    .eyebrow{color:var(--accent);font-size:.85rem;letter-spacing:.17em;text-transform:uppercase;font-weight:bold}
+    h1{font-size:clamp(2rem,5vw,3.5rem);line-height:1.13;margin:14px 0}
+    .intro p,.history p{line-height:1.75;color:var(--muted);font-size:1.05rem}
+    .carousel{position:relative;border:1px solid rgba(111,220,255,.25);background:#061420;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+    .photo-button{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in}
+    .photo-button img{display:block;width:100%;height:clamp(260px,55vw,670px);object-fit:contain}
+    .photo-button img.fade{animation:photo-in .35s ease}
+    @keyframes photo-in{from{opacity:.45}to{opacity:1}}
+    .arrow{position:absolute;top:50%;transform:translateY(-50%);height:46px;width:46px;border:0;border-radius:50%;color:white;background:rgba(0,0,0,.55);font-size:1.8rem;cursor:pointer;z-index:1}
+    .arrow:hover,.arrow:focus-visible{background:#087fa5}
+    .prev{left:14px}.next{right:14px}
+    .counter{position:absolute;bottom:16px;right:17px;background:rgba(0,0,0,.68);padding:8px 14px;border-radius:30px;font-size:.85rem;font-variant-numeric:tabular-nums;pointer-events:none}
+    .dots{display:flex;justify-content:center;flex-wrap:wrap;gap:11px;padding:20px 0}
+    .dots button{width:11px;height:11px;padding:0;border:0;border-radius:50%;background:#788e99;cursor:pointer}
+    .dots button[aria-current="true"]{background:#78e5ff;box-shadow:0 0 0 4px rgba(120,229,255,.14)}
+    .note{text-align:center;font-size:.85rem;color:var(--muted);margin:0 0 50px;line-height:1.6}
+    .history{max-width:900px;margin:auto;padding:32px; border:1px solid rgba(111,220,255,.24);border-radius:20px;background:rgba(255,255,255,.04)}
+    .history h2{font-size:clamp(1.5rem,3vw,2.1rem);margin:0 0 15px}
+    .history p:last-child{margin-bottom:0}
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:10;display:grid;place-items:center;padding:55px 16px 30px}
+    .lightbox[hidden]{display:none}
+    .lightbox img{max-width:100%;max-height:85vh;object-fit:contain}
+    .close{position:absolute;right:20px;top:15px;border:0;background:rgba(255,255,255,.15);color:#fff;border-radius:50%;font-size:1.7rem;width:44px;height:44px;cursor:pointer}
+    button:focus-visible,a:focus-visible{outline:3px solid #a1ecff;outline-offset:3px}
+    @media(max-width:600px){.page{padding:22px 12px 48px}.arrow{height:38px;width:38px;font-size:1.45rem}.prev{left:8px}.next{right:8px}.history{padding:22px}}
+    @media(prefers-reduced-motion:reduce){.photo-button img.fade{animation:none}}
   </style>
 </head>
-
 <body>
   <main class="page">
+    <a class="back" href="index.html">← Retour à l’accueil</a>
+    <header class="intro">
+      <div class="eyebrow">Béni Saf · Souvenirs d’antan</div>
+      <h1>La plage du Puits, un voyage dans le temps</h1>
+      <p>Redécouvrez la plage du Puits à travers dix photographies anciennes restaurées en couleurs : la mer, les villas et les paysages qui ont marqué tant de souvenirs.</p>
+    </header>
 
-    <a href="index.html">← Retour à l'accueil</a>
+    <section aria-label="Galerie historique de la plage du Puits">
+      <div class="carousel" id="puitsCarousel" aria-roledescription="carrousel">
+        <button class="photo-button" id="openPhoto" type="button" aria-label="Agrandir la photographie actuelle">
+          <img id="puitsImage" src="images/beniSaf%20(1).png" alt="Plage du Puits à Béni Saf, photographie historique restaurée 1 sur 10" fetchpriority="high">
+        </button>
+        <button class="arrow prev" id="previousPhoto" type="button" aria-label="Photographie précédente">&#10094;</button>
+        <button class="arrow next" id="nextPhoto" type="button" aria-label="Photographie suivante">&#10095;</button>
+        <span class="counter" id="puitsCounter" aria-live="polite">01 / 10</span>
+      </div>
+      <div class="dots" id="puitsDots" aria-label="Choisir une photographie"></div>
+      <p class="note">Images restaurées et reconstituées en couleurs à partir de photographies anciennes. Certains détails peuvent être interprétés par l’intelligence artificielle. Cliquez sur la photographie pour l’agrandir.</p>
+    </section>
 
-    <h1>Lieux à visiter à Béni Saf</h1>
-
-<p>
-  Découvrez prochainement les principaux lieux à visiter à Béni Saf et dans les environs :
-  plages, port, Rachgoun, patrimoine, paysages et sites incontournables.
-</p>
-
-    <div class="box">
-      <strong>À venir :</strong>
-      Tous les lieux insolite à visiter sur Béni Saf, Oulhaça El Gheraba qui est une commune de la wilaya d'Aïn Témouchent en Algérie. 
-      Son territoire abrite l'antique Siga, ancienne capitale numide du roi Syphax.
-    </div>
-
+    <section class="history" aria-labelledby="historyTitle">
+      <h2 id="historyTitle">L’histoire de la plage du Puits</h2>
+      <p>Face à la Méditerranée, la plage du Puits appartient à la mémoire de Béni Saf. Ses maisons en bord de mer, ses falaises et ses lieux de baignade ont traversé les générations.</p>
+      <p>Parmi les villas que l’on retrouve sur les photographies d’époque figure <strong>Le Rêve Bleu</strong>, reconnaissable à sa façade blanche et à ses volets bleu azurin clair.</p>
+      <p><em>À suivre : les origines de la plage, ses anciennes villas et les souvenirs des habitants. Cette partie sera enrichie progressivement à partir de témoignages et de documents historiques.</em></p>
+    </section>
   </main>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photographie agrandie">
+    <button class="close" id="closePhoto" type="button" aria-label="Fermer l’agrandissement">×</button>
+    <img id="lightboxImage" alt="Photographie de la plage du Puits agrandie">
+  </div>
+
+  <script>
+    (() => {
+      const photos = Array.from({length:10}, (_,i) => `images/beniSaf%20(${i+1}).png`);
+      const image = document.getElementById('puitsImage');
+      const counter = document.getElementById('puitsCounter');
+      const dots = document.getElementById('puitsDots');
+      const carousel = document.getElementById('puitsCarousel');
+      const modal = document.getElementById('lightbox');
+      const modalImage = document.getElementById('lightboxImage');
+      const openButton = document.getElementById('openPhoto');
+      let current = 0;
+      let timer;
+      let lastFocus;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function pause(){ clearInterval(timer); }
+      function resume(){
+        pause();
+        if (!prefersReducedMotion && modal.hidden && !document.hidden) timer = setInterval(() => show(current+1), 6000);
+      }
+      function show(index){
+        current = (index + photos.length) % photos.length;
+        image.classList.remove('fade');
+        void image.offsetWidth;
+        image.src = photos[current];
+        image.alt = `Plage du Puits à Béni Saf, photographie historique restaurée ${current+1} sur 10`;
+        image.classList.add('fade');
+        counter.textContent = `${String(current+1).padStart(2,'0')} / 10`;
+        [...dots.children].forEach((dot,i) => dot.setAttribute('aria-current', i===current ? 'true':'false'));
+        if(!modal.hidden){modalImage.src=photos[current];modalImage.alt=image.alt;}
+        resume();
+      }
+      photos.forEach((_,i) => {
+        const dot=document.createElement('button');
+        dot.type='button';
+        dot.setAttribute('aria-label', `Afficher la photographie ${i+1}`);
+        dot.addEventListener('click', () => show(i));
+        dots.appendChild(dot);
+      });
+      document.getElementById('previousPhoto').addEventListener('click', () => show(current-1));
+      document.getElementById('nextPhoto').addEventListener('click', () => show(current+1));
+      openButton.addEventListener('click', () => {
+        lastFocus=document.activeElement;
+        modalImage.src=photos[current];modalImage.alt=image.alt;
+        modal.hidden=false;
+        pause();
+        document.getElementById('closePhoto').focus();
+      });
+      function closeModal(){
+        modal.hidden=true;modalImage.removeAttribute('src');
+        if(lastFocus)lastFocus.focus();
+        resume();
+      }
+      document.getElementById('closePhoto').addEventListener('click',closeModal);
+      modal.addEventListener('click', e => {if(e.target===modal)closeModal();});
+      document.addEventListener('keydown',e => {
+        if(e.key==='Escape' && !modal.hidden)closeModal();
+        if((e.key==='ArrowRight'||e.key==='ArrowLeft') && (!modal.hidden || carousel.contains(document.activeElement))){
+          e.preventDefault();show(current+(e.key==='ArrowRight'?1:-1));
+        }
+        if(e.key==='Tab' && !modal.hidden){
+          e.preventDefault();document.getElementById('closePhoto').focus();
+        }
+      });
+      carousel.addEventListener('mouseenter',pause);
+      carousel.addEventListener('mouseleave',resume);
+      carousel.addEventListener('focusin',pause);
+      carousel.addEventListener('focusout',() => requestAnimationFrame(() => {if(!carousel.contains(document.activeElement))resume();}));
+      document.addEventListener('visibilitychange',() => document.hidden?pause():resume());
+      image.addEventListener('error',() => {image.alt='Image introuvable : vérifiez le dossier images et le nom du fichier.';});
+      show(0);
+    })();
+  </script>
 </body>
 </html>
