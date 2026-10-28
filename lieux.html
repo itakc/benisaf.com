@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#04111c">
-  <meta name="description" content="La plage du Puits à Béni Saf : voyage dans le temps à travers dix photographies anciennes restaurées en couleurs, ses villas et ses souvenirs.">
+  <meta name="description" content="La plage du Puits à Béni Saf : voyage dans le temps à travers ces photographies anciennes restaurées en couleurs, 
+    ses villas en bord de mer et ses souvenirs.">
   <link rel="canonical" href="https://benisaf.fr/lieux.html">
   <title>La plage du Puits d’antan – Photos et histoire | benisaf.fr</title>
   <style>
@@ -42,6 +43,17 @@
     button:focus-visible,a:focus-visible{outline:3px solid #a1ecff;outline-offset:3px}
     @media(max-width:600px){.page{padding:22px 12px 48px}.arrow{height:38px;width:38px;font-size:1.45rem}.prev{left:8px}.next{right:8px}.history{padding:22px}}
     @media(prefers-reduced-motion:reduce){.photo-button img.fade{animation:none}}
+    
+    .photo-caption {
+  text-align: center;
+  color: #d9f3ff;
+  font-size: 17px;
+  line-height: 1.6;
+  font-style: italic;
+  margin: 4px auto 22px;
+  max-width: 850px;
+  padding: 0 15px;
+}
   </style>
 </head>
 <body>
@@ -50,7 +62,7 @@
     <header class="intro">
       <div class="eyebrow">Béni Saf · Souvenirs d’antan</div>
       <h1>La plage du Puits, un voyage dans le temps</h1>
-      <p>Redécouvrez la plage du Puits à travers dix photographies anciennes restaurées en couleurs : la mer, les villas et les paysages qui ont marqué tant de souvenirs.</p>
+      <p>Redécouvrez la plage du Puits à travers ces photographies anciennes restaurées en couleurs : la mer, les villas et les paysages qui ont marqué tant de souvenirs.</p>
     </header>
 
     <section aria-label="Galerie historique de la plage du Puits">
@@ -63,6 +75,7 @@
         <span class="counter" id="puitsCounter" aria-live="polite">01 / 10</span>
       </div>
       <div class="dots" id="puitsDots" aria-label="Choisir une photographie"></div>
+      <p class="photo-caption" id="photoCaption" aria-live="polite"></p>
       <p class="note">Images restaurées et reconstituées en couleurs à partir de photographies anciennes. Certains détails peuvent être interprétés par l’intelligence artificielle. Cliquez sur la photographie pour l’agrandir.</p>
     </section>
 
@@ -82,6 +95,20 @@
   <script>
     (() => {
       const photos = Array.from({length:10}, (_,i) => `images/beniSaf%20(${i+1}).png`);
+      const legendes = [
+  "Photographie 1 : La plage du Puits à Béni Saf.",
+  "Photographie 2 : Les villas qui bordaient la plage.",
+  "Photographie 3 : Souvenirs du bord de mer, îlot des maîtres nageurs sauveteurs.",
+  "Photographie 4 : Les paysages de la plage de Béni-Saf.",
+  "Photographie 5 : Les anciennes maisons de villégiature.",
+  "Photographie 6 : La villa Le Rêve Bleu, vers 1935.",
+  "Photographie 7 : La Méditerranée et ses falaises.",
+  "Photographie 8 : Les baignades et les familles d'autrefois.",
+  "Photographie 9 : La plage du Puits au fil du temps.",
+  "Photographie 10 : Béni Saf, souvenirs d'une autre époque."
+];
+
+const caption = document.getElementById('photoCaption');
       const image = document.getElementById('puitsImage');
       const counter = document.getElementById('puitsCounter');
       const dots = document.getElementById('puitsDots');
@@ -104,6 +131,7 @@
         void image.offsetWidth;
         image.src = photos[current];
         image.alt = `Plage du Puits à Béni Saf, photographie historique restaurée ${current+1} sur 10`;
+        caption.textContent = legendes[current];
         image.classList.add('fade');
         counter.textContent = `${String(current+1).padStart(2,'0')} / 10`;
         [...dots.children].forEach((dot,i) => dot.setAttribute('aria-current', i===current ? 'true':'false'));
